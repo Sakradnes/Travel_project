@@ -1,19 +1,19 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Favourit extends Model {
-    static associate({ Putt, User }) {
-      this.belongsTo(Putt, { foreignKey: 'putId' });
+  class Favourite extends Model {
+    static associate({ Route, User }) {
+      this.belongsTo(Route, { foreignKey: 'routeId' });
       this.belongsTo(User, { foreignKey: 'userId' });
     }
   }
-  Favourit.init(
+  Favourite.init(
     {
       routId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Routs',
+          model: 'Routes',
           key: 'id',
         },
       },
@@ -31,5 +31,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'Favourites',
     }
   );
-  return Favourit;
+  return Favourite;
 };

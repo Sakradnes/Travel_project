@@ -6,7 +6,7 @@ import { currentLoc } from '../features/travel/travelSlice';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
-  console.log(city);
+
 
   const locantions: Location[] = [
     { id: 1, name: 'Санкт-Петербруг' },

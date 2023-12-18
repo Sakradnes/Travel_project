@@ -3,7 +3,7 @@ const { putt } = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Putts', [
+    await queryInterface.bulkInsert('Routes', [
       {
         name: '1. Финляндский вокзал → Паровоз Ленина → Поющие фонтаны → Сампсониевский мост → Крейсер Аврора → Домик Петра I → Львы Ши-Цза.',
         img: 'https://static.spaser.pw/petersburg/__what_and_where/monuments/Lions_Chi/1.jpg',
@@ -38,6 +38,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Putts', null, {});
+    await queryInterface.bulkDelete('Routes', null, {});
   },
 };

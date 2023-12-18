@@ -2,8 +2,8 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
-    static associate({ User, Putt }) {
-      this.belongsTo(Putt, { foreignKey: 'putId' });
+    static associate({ User, Route }) {
+      this.belongsTo(Route, { foreignKey: 'routeId' });
       this.belongsTo(User, { foreignKey: 'userId' });
     }
   }
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      putId: {
+      routeId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Putts',
+          model: 'Routes',
           key: 'id',
         },
       },

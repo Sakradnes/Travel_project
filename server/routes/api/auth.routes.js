@@ -22,7 +22,6 @@ router.post('/login', async (req, res) => {
             isAdmin: user.isAdmin,
           },
         });
-        console.log(res.locals.user);
         res
           .cookie(cookiesConfig.access, accessToken, {
             maxAge: cookiesConfig.maxAgeAccess,
@@ -140,7 +139,7 @@ router.get('/logout', (req, res) => {
 // проверка активной сессии и отправка информации о пользователе
 router.get('/check', async (req, res) => {
   const { user } = res.locals; // ищем активную сессию
-  console.log(user, '-----');
+
   const userData = await User.findByPk(user?.id); // ищем пользователя в бд(чтобы подтнуть информацию о его профиле)
   if (user && userData) {
     delete userData.password; //  чтобы не отправлять пароль на клиент

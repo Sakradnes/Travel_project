@@ -21,17 +21,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      discription: {
+      description: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
       locationId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
+        references: {
           model: 'Locations',
           key: 'id',
-        }
+        },
       },
       createdAt: {
         allowNull: false,

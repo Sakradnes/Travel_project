@@ -54,3 +54,11 @@
   max-width: 1280px;
   text-align: center;
 }
+
+.react-calendar .highlight {
+  outline: 2px solid red;
+}
+
+.react-calendar .background {
+  background-color: peachpuff;
+}

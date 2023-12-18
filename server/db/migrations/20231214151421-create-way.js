@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      putId: {
+      routeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Putts',
+          model: 'Routes',
           key: 'id',
         },
       },

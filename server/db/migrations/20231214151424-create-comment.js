@@ -17,11 +17,11 @@ module.exports = {
           key: 'id',
         },
       },
-      putId: {
+      routeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Putts',
+          model: 'Routes',
           key: 'id',
         },
       },

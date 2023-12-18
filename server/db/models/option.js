@@ -2,8 +2,8 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Option extends Model {
-    static associate({Putt}) {
-      this.hasMany(Putt, { foreignKey: 'optionId' });
+    static associate({ Route }) {
+      this.hasMany(Route, { foreignKey: 'optionId' });
     }
   }
   Option.init(

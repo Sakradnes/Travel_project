@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Event extends Model {
-    static associate({Location, }) {
+    static associate({ Location }) {
       this.belongsTo(Location, { foreignKey: 'locationId' });
     }
   }
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      discription: {
+      description: {
         allowNull: false,
         type: DataTypes.TEXT,
       },

@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Putt extends Model {
+  class Route extends Model {
     static associate({
       User,
       Way,
@@ -12,15 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       Location,
     }) {
       this.belongsTo(User, { foreignKey: 'userId' });
-      this.hasMany(Way, { foreignKey: 'putId' });
+      this.hasMany(Way, { foreignKey: 'routeId' });
       this.belongsTo(Location, { foreignKey: 'locationId' });
-      this.hasMany(Comments, { foreignKey: 'putId' });
-      this.hasMany(Favourites, { foreignKey: 'putId' });
-      this.hasMany(Rating, { foreignKey: 'putId' });
+      this.hasMany(Comments, { foreignKey: 'routeId' });
+      this.hasMany(Favourites, { foreignKey: 'routeId' });
+      this.hasMany(Rating, { foreignKey: 'routeId' });
       this.belongsTo(Option, { foreignKey: 'optionId' });
     }
   }
-  Putt.init(
+  Route.init(
     {
       name: {
         allowNull: false,
@@ -61,8 +61,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Putt',
+      modelName: 'Route',
     }
   );
-  return Putt;
+  return Route;
 };

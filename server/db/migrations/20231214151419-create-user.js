@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       photoAlbumId: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'PhotoAlbums',

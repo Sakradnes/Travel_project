@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 
-const indexRouter = require('./Routs/index.route');
+const indexRouter = require('./routes/index.routes');
 const serverConfig = require('./config/serverConfig');
 const checkUser = require('./middlewares/verifyJWT');
 

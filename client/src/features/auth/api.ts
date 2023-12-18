@@ -27,3 +27,8 @@ export const loginFetch = async (obj: Login): Promise<User> => {
   const data = await res.json();
   return data;
 };
+
+export async function userCheck(): Promise<User| undefined>
+ {
+  return (await fetch('/api/auth/check')).json();
+}

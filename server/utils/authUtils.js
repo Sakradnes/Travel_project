@@ -3,10 +3,10 @@ const jwtConfig = require('../config/jwtConfig');
 
 const generateTokens = (payload) => ({
   refreshToken: jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: 1000 * 60 * 60 * 12,
+    expiresIn: jwtConfig.refresh.expiresIn,
   }),
   accessToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: 1000 * 60 * 5,
+    expiresIn: jwtConfig.access.expiresIn,
   }),
 });
 

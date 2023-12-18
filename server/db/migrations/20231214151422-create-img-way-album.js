@@ -2,32 +2,25 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Ratings', {
+    await queryInterface.createTable('ImgWayAlbums', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
+      wayId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Ways',
           key: 'id',
         },
       },
-      routId: {
+      img: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Routs',
-          key: 'id',
-        },
-      },
-      rating: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Ratings');
+    await queryInterface.dropTable('ImgWayAlbums');
   },
 };

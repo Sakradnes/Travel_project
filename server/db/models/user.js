@@ -2,11 +2,11 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({ Comment, Favorite, Rout, photoAlbum, Rating }) {
-      this.hasMany(Favorite, { foreignKey: '' });
-      this.hasMany(Comment, { foreignKey: 'userId' });
-      this.hasMany(Rout, { foreignKey: 'userId' });
-      this.hasMany(photoAlbum, { foreignKey: 'userId' });
+    static associate({ Comments, Favourites, Putt, PhotoAlbum, Rating }) {
+      this.hasMany(Favourites, { foreignKey: 'userId' });
+      this.hasMany(Comments, { foreignKey: 'userId' });
+      this.hasMany(Putt, { foreignKey: 'userId' });
+      this.hasMany(PhotoAlbum, { foreignKey: 'userId' });
       this.hasMany(Rating, { foreignKey: 'userId' });
     }
   }
@@ -35,18 +35,14 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: false,
         type: DataTypes.BOOLEAN,
       },
-      photoAlbom: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        onDelete: 'cascade',
-      },
-      routId: {
+      photoAlbumId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Routs',
+          model: 'PhotoAlbums',
           key: 'id',
         },
+        onDelete: 'cascade',
       },
     },
     {

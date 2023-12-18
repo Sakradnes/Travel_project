@@ -2,21 +2,12 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('photoAlbums', {
+    await queryInterface.createTable('Ratings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      name: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
-      img: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-        onDelete: 'cascade',
       },
       userId: {
         allowNull: false,
@@ -25,6 +16,18 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+      },
+      putId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Putts',
+          key: 'id',
+        },
+      },
+      rating: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +40,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('photoAlbums');
+    await queryInterface.dropTable('Ratings');
   },
 };

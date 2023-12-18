@@ -2,9 +2,9 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Rating extends Model {
-    static associate({ User, Route }) {
+    static associate({ User, Putt }) {
       this.belongsTo(User, { foreignKey: 'userId' });
-      this.belongsTo(Route, { foreignKey: 'routId' });
+      this.belongsTo(Putt, { foreignKey: 'putId' });
     }
   }
   Rating.init(
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      routId: {
+      putId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Routs',
+          model: 'Puts',
           key: 'id',
         },
       },

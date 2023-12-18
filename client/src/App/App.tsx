@@ -5,6 +5,7 @@ import Layout from './Layout';
 import MainPage from './MainPage';
 import RegaPage from '../features/auth/components/RegaPage';
 import LoginPage from '../features/auth/components/LoginPage';
+import ProfilePage from '../features/profile/components/ProfilePage';
 
 function App(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function App(): JSX.Element {
         <Route path="/" element={<MainPage />} />
         <Route path="/registration" element={<RegaPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
     </Routes>
   );

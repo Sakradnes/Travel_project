@@ -1,13 +1,13 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class imgWayAlbum extends Model {
+  class ImgWayAlbum extends Model {
     static associate({Way}) {
       this.belongsTo(Way, { foreignKey: 'wayId' });
 
     } 
   }
-  imgWayAlbum.init(
+  ImgWayAlbum.init(
     {
       wayId: {
         allowNull: false,
@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'imgWayAlbum',
+      modelName: 'ImgWayAlbum',
     }
   );
-  return imgWayAlbum;
+  return ImgWayAlbum;
 };

@@ -1,14 +1,13 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Favourites  extends Model {
-    static associate({Rout, User}) {
-      this.belongsTo(Rout, { foreignKey: 'routId' });
+  class Favourit extends Model {
+    static associate({ Putt, User }) {
+      this.belongsTo(Putt, { foreignKey: 'putId' });
       this.belongsTo(User, { foreignKey: 'userId' });
-
     }
   }
-  Favourites.init(
+  Favourit.init(
     {
       routId: {
         allowNull: false,
@@ -32,5 +31,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'Favourites',
     }
   );
-  return Favourites;
+  return Favourit;
 };

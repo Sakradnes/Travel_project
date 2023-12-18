@@ -2,17 +2,18 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Way extends Model {
-    static associate({ Rout }) {
-      this.belongsTo(Rout, { foreignKey: 'routId' });
+    static associate({ Putt, ImgWayAlbum }) {
+      this.belongsTo(Putt, { foreignKey: 'putId' });
+      this.hasMany(ImgWayAlbum, { foreignKey: 'wayId' });
     }
   }
   Way.init(
     {
-      routId: {
+      putId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Routs',
+          model: 'Putts',
           key: 'id',
         },
       },

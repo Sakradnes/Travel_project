@@ -1,18 +1,26 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Rout extends Model {
-    static associate({User, Way, Location, Comment, Favorit, Rating, Option}) {
-      this.hasMany(User, { foreignKey: 'routId' });
-      this.hasMany(Way, { foreignKey: 'routId' });
-      this.hasMany(Location, { foreignKey: 'routId' });
-      this.hasMany(Comment, { foreignKey: 'routId' });
-      this.hasMany(Favorit, { foreignKey: 'routId' });
-      this.hasMany(Rating, { foreignKey: 'routId' });
-      this.hasMany(Option, { foreignKey: 'routId' });
+  class Putt extends Model {
+    static associate({
+      User,
+      Way,
+      Comments,
+      Favourites,
+      Rating,
+      Option,
+      Location,
+    }) {
+      this.belongsTo(User, { foreignKey: 'userId' });
+      this.hasMany(Way, { foreignKey: 'putId' });
+      this.belongsTo(Location, { foreignKey: 'locationId' });
+      this.hasMany(Comments, { foreignKey: 'putId' });
+      this.hasMany(Favourites, { foreignKey: 'putId' });
+      this.hasMany(Rating, { foreignKey: 'putId' });
+      this.belongsTo(Option, { foreignKey: 'optionId' });
     }
   }
-  Rout.init(
+  Putt.init(
     {
       name: {
         allowNull: false,
@@ -53,8 +61,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Rout',
+      modelName: 'Putt',
     }
   );
-  return Rout;
+  return Putt;
 };

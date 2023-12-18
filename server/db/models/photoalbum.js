@@ -1,12 +1,12 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class photoAlbum extends Model {
-    static associate({User}) {
+  class PhotoAlbum extends Model {
+    static associate({ User }) {
       this.belongsTo(User, { foreignKey: 'userId' });
     }
   }
-  photoAlbum.init(
+  PhotoAlbum.init(
     {
       name: {
         allowNull: false,
@@ -17,19 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         onDelete: 'cascade',
       },
-      userId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id',
-        },
-      },
     },
     {
       sequelize,
-      modelName: 'photoAlbum',
+      modelName: 'PhotoAlbum',
     }
   );
-  return photoAlbum;
+  return PhotoAlbum;
 };

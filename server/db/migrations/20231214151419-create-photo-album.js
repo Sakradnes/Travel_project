@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('PhotoAlbums', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,35 +13,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      password: {
+      img: {
         allowNull: false,
         type: Sequelize.TEXT,
-      },
-      email: {
-        allowNull: false,
-        unique: true,
-        type: Sequelize.TEXT,
-      },
-      avatar: {
-        allowNull: false,
-        defaultValue: '/img/2070691.png',
-        type: Sequelize.TEXT,
-      },
-      isAdmin: {
-        allowNull: false,
-        defaultValue: false,
-        type: Sequelize.BOOLEAN,
-      },
-      photoAlbumId: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'PhotoAlbums',
-          key: 'id',
-        },
         onDelete: 'cascade',
       },
-
+      userId:{
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -53,6 +37,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('PhotoAlbums');
   },
 };

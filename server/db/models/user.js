@@ -1,13 +1,13 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({ Comments, Favourites, Route, PhotoAlbum, Rating }) {
-      this.hasMany(Favourites, { foreignKey: 'userId' });
-      this.hasMany(Comments, { foreignKey: 'userId' });
-      this.hasMany(Route, { foreignKey: 'userId' });
-      this.hasMany(PhotoAlbum, { foreignKey: 'userId' });
-      this.hasMany(Rating, { foreignKey: 'userId' });
+      this.hasMany(Favourites, { foreignKey: "userId" });
+      this.hasMany(Comments, { foreignKey: "userId" });
+      this.hasMany(Route, { foreignKey: "userId" });
+      this.hasMany(PhotoAlbum, { foreignKey: "userId" });
+      this.hasMany(Rating, { foreignKey: "userId" });
     }
   }
   User.init(
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       avatar: {
         allowNull: false,
-        defaultValue: '/img/2070691.png',
+        defaultValue: "/img/2070691.png",
         type: DataTypes.TEXT,
       },
       isAdmin: {
@@ -35,19 +35,10 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: false,
         type: DataTypes.BOOLEAN,
       },
-      photoAlbumId: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'PhotoAlbums',
-          key: 'id',
-        },
-        onDelete: 'cascade',
-      },
     },
     {
       sequelize,
-      modelName: 'User',
+      modelName: "User",
     }
   );
   return User;

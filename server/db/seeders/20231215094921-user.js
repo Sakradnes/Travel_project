@@ -11,7 +11,7 @@ module.exports = {
         avatar: '/img/2070691.png',
         password: await bcrypt.hash('123', 10),
         isAdmin: true,
-        photoAlbumId: 1,
+        
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -21,7 +21,7 @@ module.exports = {
         avatar: '/img/2070691.png',
         password: await bcrypt.hash('123', 10),
         isAdmin: false,
-        photoAlbumId: 2,
+        
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -31,7 +31,7 @@ module.exports = {
         avatar: '/img/2070691.png',
         password: await bcrypt.hash('123', 10),
         isAdmin: true,
-        photoAlbumId: 3,
+        
         createdAt: new Date(),
         updatedAt: new Date(),
       },

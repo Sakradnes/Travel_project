@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('PhotoAlbums', {
+    await queryInterface.createTable("Users", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,11 +13,26 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      img: {
+      password: {
         allowNull: false,
         type: Sequelize.TEXT,
-        onDelete: 'cascade',
       },
+      email: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.TEXT,
+      },
+      avatar: {
+        allowNull: false,
+        defaultValue: "/img/2070691.png",
+        type: Sequelize.TEXT,
+      },
+      isAdmin: {
+        allowNull: false,
+        defaultValue: false,
+        type: Sequelize.BOOLEAN,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -29,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('PhotoAlbums');
+    await queryInterface.dropTable("Users");
   },
 };

@@ -7,7 +7,6 @@ import { currentLoc } from '../features/travel/travelSlice';
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
 
-
   const locantions: Location[] = [
     { id: 1, name: 'Санкт-Петербруг' },
     {
@@ -53,8 +52,12 @@ export default function Header(): JSX.Element {
         <div>
           <h1>Мартшруты</h1>
         </div>
-        <div>
-          <h1>Блог</h1>
+        <div className="blog-container">
+          <Link to="/blog">
+            <div className="blog-list">
+              <h4>Блог</h4>
+            </div>
+          </Link>
         </div>
         <div className="flex ">
           <Link to="/registration">

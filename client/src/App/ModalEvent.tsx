@@ -4,7 +4,7 @@ export default function ModalEvent({
   setShowModal,
   event,
 }: {
-  setShowModal: () => void;
+  setShowModal: (value: boolean) => void;
   event: any;
 }): JSX.Element {
   return (
@@ -19,7 +19,9 @@ export default function ModalEvent({
         <p>{event.description}</p>
       </div>
       <div>
-        <button type="button" onClick={() => setShowModal(false)}>закрыть</button>
+        <button type="button" onClick={() => setShowModal(false)}>
+          закрыть
+        </button>
       </div>
     </div>
   );

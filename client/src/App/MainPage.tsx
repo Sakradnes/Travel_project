@@ -13,7 +13,7 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 export default function MainPage(): JSX.Element {
   const [value, onChange] = useState<Value>(new Date());
   const [event, setEvent] = useState({});
-  const [showModal, setshowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const locantion = useSelector((store: RootState) => store.location.isLocation);
 
@@ -62,7 +62,7 @@ export default function MainPage(): JSX.Element {
   function isSameDay(a: Date, b: Date): boolean {
     return differenceInCalendarDays(a, b) === 0;
   }
-  const tileClassName = ({ date, view }: any): TileClassNameFunc => {
+  const tileClassName = ({ date, view }: any): any => {
     const eventLocation = events.filter((event) => event.locationId === locantion);
     if (
       view === 'month' &&
@@ -74,12 +74,12 @@ export default function MainPage(): JSX.Element {
     }
   };
 
-  const onClickDay = (date): void => {
+  const onClickDay = (date: Date): void => {
     const eventLocation = events.filter((event) => event.locationId === locantion);
     eventLocation.forEach((el) => {
       if (new Date(el.date.replace(/(\d+)-(\d+)-(\d+)/, '$2/$3/$1')).getTime() === date.getTime()) {
         setEvent(el);
-        setshowModal(true);
+        setShowModal(true);
       }
     });
   };
@@ -102,7 +102,7 @@ export default function MainPage(): JSX.Element {
         {showModal ? (
           <>
             {' '}
-            <ModalEvent setShowModal={setshowModal} event={event} />
+            <ModalEvent setShowModal={setShowModal} event={event} />
           </>
         ) : (
           ''

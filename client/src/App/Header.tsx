@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../store/store';
+import { RootState, useAppDispatch } from '../store/store';
 import { type Location } from '../features/travel/type/typestravel';
 import { currentLoc } from '../features/travel/travelSlice';
+import { useSelector } from 'react-redux';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
-
+  const user = useSelector((store: RootState) => store.auth.user);
 
   const locantions: Location[] = [
     { id: 1, name: 'Санкт-Петербруг' },
@@ -58,16 +59,26 @@ export default function Header(): JSX.Element {
           <h1>Блог</h1>
         </div>
         <div className="flex ">
-          <Link to="/registration">
-            <div className="pr-5">
-              <h1>Регистрация</h1>
-            </div>
-          </Link>
-          <Link to="/login">
-            <div>
-              <h1>Войти</h1>
-            </div>
-          </Link>
+          {user ? (
+            <>
+              <div>
+                <h1>Мой профиль</h1>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/registration">
+                <div className="pr-5">
+                  <h1>Регистрация</h1>
+                </div>
+              </Link>
+              <Link to="/login">
+                <div>
+                  <h1>Войти</h1>
+                </div>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

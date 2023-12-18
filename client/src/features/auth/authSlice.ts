@@ -13,6 +13,8 @@ export const registration = createAsyncThunk('auth/registration', (obj: Rega) =>
 
 export const login = createAsyncThunk('auth/login', (obj: Login) => api.loginFetch(obj));
 
+export const check = createAsyncThunk('auth/check', () => api.userCheck());
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -29,6 +31,12 @@ const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(check.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(check.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

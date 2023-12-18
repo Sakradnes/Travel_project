@@ -57,16 +57,10 @@ router.post('/login', async (req, res) => {
 });
 
 // создание нового пользователя
-router.post('/register', async (req, res) => {
-  const { email, password, name, lastname, idAvatar, description } = req.body;
+router.post('/registration', async (req, res) => {
+  const { email, password, name } = req.body;
 
-  if (
-    name === '' ||
-    email === '' ||
-    lastname === '' ||
-    idAvatar === '' ||
-    description === ''
-  ) {
+  if (name === '' || email === '' || password === '') {
     return res
       .status(400)
       .json({ success: false, message: 'Заполните все поля' });
@@ -85,9 +79,6 @@ router.post('/register', async (req, res) => {
         name,
         email,
         password: hash,
-        lastname,
-        avatarId: idAvatar,
-        description,
       });
 
       const { accessToken, refreshToken } = generateTokens({
@@ -95,8 +86,6 @@ router.post('/register', async (req, res) => {
           id: user.id,
           email: user.email,
           name: user.name,
-          lastname: user.lastname,
-          avatarId: user.avatarId,
         },
       });
 
@@ -113,9 +102,10 @@ router.post('/register', async (req, res) => {
         message: 'ok',
         user: {
           name,
-          idAvatar,
           id: user.id,
           email,
+          avatar: user.avatar,
+          isAdmin: user.isAdmin,
         },
       });
     }

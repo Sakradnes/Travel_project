@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
   PhotoAlbum.init(
     {
       name: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
       },
       img: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
         onDelete: 'cascade',
       },

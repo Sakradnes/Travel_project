@@ -7,17 +7,20 @@ module.exports = {
       {
         name: 'Фотоальбом',
         img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
+        userId:1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Фотоальбом1',
+        userId:3,
         img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Фотоальбом2',
+        userId:2,
         img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),

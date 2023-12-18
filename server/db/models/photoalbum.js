@@ -17,14 +17,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         onDelete: 'cascade',
       },
-      userId: {
+      userId:{
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
           model: 'Users',
           key: 'id',
         },
-      },
+      }
     },
     {
       sequelize,

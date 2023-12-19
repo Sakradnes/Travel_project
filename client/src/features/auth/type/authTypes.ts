@@ -14,6 +14,7 @@ export type User = {
 };
 
 export type State = {
+  isLoggedIn: boolean;
   user: undefined | User;
   error: undefined | string;
 };

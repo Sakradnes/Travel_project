@@ -8,7 +8,7 @@ export default function ModalEvent({
   event: any;
 }): JSX.Element {
   return (
-    <div>
+    <div className="containerCalendar">
       <div>
         <div>
           <img src={event.img} alt={event.name} />
@@ -16,7 +16,7 @@ export default function ModalEvent({
         <div>
           <h1>{event.name}</h1>
         </div>
-        <p>{event.description}</p>
+        <p className="textCalendar">{`${event.description.slice(0, 100)}...`}</p>
       </div>
       <div>
         <button type="button" onClick={() => setShowModal(false)}>

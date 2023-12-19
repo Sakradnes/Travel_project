@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../store/store';
-import { type Location } from '../features/travel/type/typestravel';
-import { currentLoc } from '../features/travel/travelSlice';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { type RootState, useAppDispatch } from '../store/store';
+import { currentLoc } from '../features/location/locationSlice';
+import { loadLocations } from '../features/location/locationSlice';
+import { logout } from '../features/auth/authSlice';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
 
+  const navigate = useNavigate();
+  const { user, isLoggedIn } = useSelector((store: RootState) => store.auth);
+  const locations = useSelector((store: RootState) => store.location.locations);
+
+
   const user = useSelector((store: RootState) => store.auth.user);
 
 
-  const locantions: Location[] = [
-    { id: 1, name: 'Санкт-Петербруг' },
-    {
-      id: 2,
-      name: 'Москва',
-    },
-  ];
+ 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadLocations());
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem('cityId')) {
@@ -32,6 +36,10 @@ export default function Header(): JSX.Element {
     localStorage.setItem('cityId', e.target.value);
     setCity(+e.target.value);
   };
+  const handleLogout: React.MouseEventHandler<HTMLButtonElement> = () => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <nav className=" header">
@@ -44,7 +52,7 @@ export default function Header(): JSX.Element {
         <div>
           <label htmlFor="location">Выберите локацию:</label>
           <select onChange={handleSelect} value={city}>
-            {locantions.map((locantion) => {
+            {locations.map((locantion) => {
               return (
                 <option key={locantion.id} value={locantion.id}>
                   {locantion.name}
@@ -55,10 +63,12 @@ export default function Header(): JSX.Element {
         </div>
         <div>
 
+
           <h1>Мартшруты путешествий</h1>
 
           <Link to="/profile"> Profile </Link>
-          <h1>Мартшруты</h1>
+
+       
 
         </div>
         <div className="blog-container">
@@ -69,10 +79,20 @@ export default function Header(): JSX.Element {
           </Link>
         </div>
         <div className="flex ">
-          {user ? (
+          {user && isLoggedIn ? (
             <>
-              <div>
-                <h1>Мой профиль</h1>
+              <div className="dropdown">
+                <button className="dropbtn" type="button">
+                  Мой профиль
+                </button>
+                <div className="dropdown-content">
+                  <Link to="/profile">
+                    <h1> Мой профиль</h1>
+                  </Link>
+                  <button type="button" onClick={handleLogout}>
+                    <h1>Выйти</h1>
+                  </button>
+                </div>
               </div>
             </>
           ) : (

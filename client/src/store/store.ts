@@ -1,14 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import authSlice from '../features/auth/authSlice';
-import travelSlice from '../features/travel/travelSlice';
+
+import locationSlice from '../features/location/locationSlice';
+import eventSlice from '../features/event/eventSlice';
 import BlogSlice from '../features/blog/BlogSlice';
+
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
-    location: travelSlice,
+
+    location: locationSlice,
+    event: eventSlice,
     blog: BlogSlice
+
   },
 });
 

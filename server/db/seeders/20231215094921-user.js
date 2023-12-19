@@ -9,7 +9,7 @@ module.exports = {
         name: 'Alex',
         email: 'alex@mail.ru',
         avatar: '/img/2070691.png',
-        password: await bcrypt.hash('123', 10),
+        password: await bcrypt.hash('12345678', 10),
         isAdmin: true,
         
         createdAt: new Date(),
@@ -19,7 +19,7 @@ module.exports = {
         name: 'Ivan',
         email: 'ivan@mail.ru',
         avatar: '/img/2070691.png',
-        password: await bcrypt.hash('123', 10),
+        password: await bcrypt.hash('12345678', 10),
         isAdmin: false,
         
         createdAt: new Date(),
@@ -29,7 +29,7 @@ module.exports = {
         name: 'Ilya',
         email: 'ilya@mail.ru',
         avatar: '/img/2070691.png',
-        password: await bcrypt.hash('123', 10),
+        password: await bcrypt.hash('12345678', 10),
         isAdmin: true,
         
         createdAt: new Date(),

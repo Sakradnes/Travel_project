@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 import { type RootState } from '../../../store/store';
 
 function ProfilePage(): JSX.Element {
-  const [user, setUser] = useState({})
-  useEffect(() => {
+  // const [user, setUser] = useState({})
+  // useEffect(() => {
 
-    fetch('/api/profile')
-      .then((res) => res.json())
-      .then((data) =>
-      setUser(data)
+  //   fetch('/api/profile')
+  //     .then((res) => res.json())
+  //     .then((data) =>
+  //     setUser(data)
      
-     );
-  }  ,[]);
+  //    );
+  // }  ,[]);
 
   return (
     <>

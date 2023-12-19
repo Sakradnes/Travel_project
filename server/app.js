@@ -9,6 +9,7 @@ const serverConfig = require("./config/serverConfig");
 const checkUser = require("./middlewares/verifyJWT");
 
 
+
 const app = express();
 
 serverConfig(app);

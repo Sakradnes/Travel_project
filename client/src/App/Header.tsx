@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
+
   const user = useSelector((store: RootState) => store.auth.user);
+
 
   const locantions: Location[] = [
     { id: 1, name: 'Санкт-Петербруг' },
@@ -52,11 +54,19 @@ export default function Header(): JSX.Element {
           </select>
         </div>
         <div>
+
+          <h1>Мартшруты путешествий</h1>
+
           <Link to="/profile"> Profile </Link>
           <h1>Мартшруты</h1>
+
         </div>
-        <div>
-          <h1>Блог</h1>
+        <div className="blog-container">
+          <Link to="/blog">
+            <div className="blog-list">
+              <h4>Блог</h4>
+            </div>
+          </Link>
         </div>
         <div className="flex ">
           {user ? (

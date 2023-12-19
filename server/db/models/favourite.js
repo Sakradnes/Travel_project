@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Favourite.init(
     {
-      routId: {
+      routeId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {

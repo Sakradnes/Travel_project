@@ -33,7 +33,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
     '@typescript-eslint/explicit-function-return-type': [
-      'error',
+      'warn',
       {
         allowExpressions: true,
         allowTypedFunctionExpressions: true,

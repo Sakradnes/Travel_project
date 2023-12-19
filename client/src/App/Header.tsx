@@ -8,9 +8,16 @@ import { logout } from '../features/auth/authSlice';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
+
   const navigate = useNavigate();
   const { user, isLoggedIn } = useSelector((store: RootState) => store.auth);
   const locations = useSelector((store: RootState) => store.location.locations);
+
+
+  const user = useSelector((store: RootState) => store.auth.user);
+
+
+ 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -55,10 +62,21 @@ export default function Header(): JSX.Element {
           </select>
         </div>
         <div>
-          <h1>Мартшруты</h1>
+
+
+          <h1>Мартшруты путешествий</h1>
+
+          <Link to="/profile"> Profile </Link>
+
+       
+
         </div>
-        <div>
-          <h1>Блог</h1>
+        <div className="blog-container">
+          <Link to="/blog">
+            <div className="blog-list">
+              <h4>Блог</h4>
+            </div>
+          </Link>
         </div>
         <div className="flex ">
           {user && isLoggedIn ? (

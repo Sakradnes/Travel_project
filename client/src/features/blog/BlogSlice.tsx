@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchPosts = createAsyncThunk('blog/fetchPosts', async () => {
-  const response = await fetch('');
+  const response = await fetch(
+    'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=809a03e6eaaa4a91bcfdd2818a0e040b',
+  );
   if (!response.ok) {
     return Error('Failed to fetch data');
   }
 
   const data = await response.json();
-  return data;
+  return data.articles;
 });
 
 const initialState = { posts: [], loading: false, error: null };
@@ -34,4 +36,3 @@ const blogSlice = createSlice({
 });
 
 export default blogSlice.reducer;
-export { fetchPosts };

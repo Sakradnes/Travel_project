@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import { RootState, useAppDispatch } from '../store/store';
 import ModalEvent from './ModalEvent';
+import { loadEvents } from '../features/event/eventSlice';
+import ModalAdd from './ModalAdd';
 
 type ValuePiece = Date | null;
 
@@ -14,51 +16,18 @@ export default function MainPage(): JSX.Element {
   const [value, onChange] = useState<Value>(new Date());
   const [event, setEvent] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [viewForm, setViewForm] = useState<'ADD' | 'Change' | 'Delete'>();
+
+  const dispatch = useAppDispatch();
 
   const locantion = useSelector((store: RootState) => store.location.isLocation);
+  const events = useSelector((store: RootState) => store.event.events);
+  const user = useSelector((store: RootState) => store.auth.user);
 
-  const events = [
-    {
-      name: 'Выставка «Горел асфальт» в Эрарте 6+',
-      date: '2023-12-16',
-      img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      discription:
-        'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      locationId: 1,
-    },
-    {
-      name: 'Выставка пуп',
-      date: '2023-12-19',
-      img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      discription:
-        'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      locationId: 2,
-    },
-    {
-      name: 'Выставка 3',
-      date: '2023-12-25',
-      img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      discription:
-        'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      locationId: 2,
-    },
-    {
-      name: 'Выставка 4',
-      date: '2023-12-28',
-      img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      discription:
-        'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      locationId: 1,
-    },
-    {
-      name: 'Выставка 5',
-      date: '2023-12-20',
-      img: 'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      discription:
-        'https://media.kudago.com/images/rich_editor/7d/ec/7dec99a9a24a5fb3b3daf08c6a30b857.jpg',
-      locationId: 1,
-    },
-  ];
+  useEffect(() => {
+    dispatch(loadEvents());
+  }, []);
+
   function isSameDay(a: Date, b: Date): boolean {
     return differenceInCalendarDays(a, b) === 0;
   }
@@ -108,6 +77,30 @@ export default function MainPage(): JSX.Element {
           ''
         )}
       </div>
+      {user?.isAdmin ? (
+        <>
+          {viewForm === 'ADD' ? <ModalAdd /> : ''}
+          {viewForm ? (
+            <>
+              <button onClick={() => setViewForm(undefined)}>Закрыть</button>
+            </>
+          ) : (
+            <>
+              <div>
+                <button onClick={() => setViewForm('ADD')}>Добавить</button>
+              </div>
+              <div>
+                <button>Изменить</button>
+              </div>
+              <div>
+                <button>Удалить</button>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

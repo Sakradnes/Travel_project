@@ -15,7 +15,7 @@ export const registrationFetch = async (obj: Rega): Promise<User> => {
 };
 
 export const loginFetch = async (obj: Login): Promise<User> => {
-  const res = await fetch('/api/auth/registration', {
+  const res = await fetch('/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(obj),
@@ -28,7 +28,18 @@ export const loginFetch = async (obj: Login): Promise<User> => {
   return data;
 };
 
-export async function userCheck(): Promise<User| undefined>
- {
-  return (await fetch('/api/auth/check')).json();
+export const logOut = async (): Promise<undefined> => {
+  const res = await fetch('/api/auth/logout');
+  const data = await res.json();
+  if (res.ok) {
+    return data;
+  }
+};
+
+export async function userCheck(): Promise<undefined> {
+  const res = await fetch('/api/auth/check');
+  const data = await res.json();
+  if (res.ok) {
+    return data.user;
+  }
 }

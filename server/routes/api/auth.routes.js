@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
           user: {
             id: user.id,
             email: user.email,
-            namE: user.name,
+            name: user.name,
             lastname: user.lastname,
             avatarId: user.avatarId,
             isAdmin: user.isAdmin,
@@ -117,10 +117,9 @@ router.post('/registration', async (req, res) => {
 // при логауте чистим все куки
 router.get('/logout', (req, res) => {
   try {
-    res
-      .clearCookie(cookiesConfig.access.type)
-      .clearCookie(cookiesConfig.refresh.type);
-    res.sendStatus(204);
+    res.locals.user = undefined;
+    res.clearCookie(cookiesConfig.access).clearCookie(cookiesConfig.refresh);
+    res.status(200).json({ message: 'success' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

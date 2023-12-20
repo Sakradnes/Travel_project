@@ -13,12 +13,15 @@ import ProfilePage from '../features/profile/components/ProfilePage';
 import BlogPage from '../features/blog/BlogPage';
 
 import { fetchPosts } from '../features/blog/BlogSlice';
+import { fetchRoutes } from '../features/routes/components/RouteSlice';
+import RoutesPage from '../features/routes/components/RoutePage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(check());
     dispatch(fetchPosts());
+    dispatch(fetchRoutes());
   }, [dispatch]);
 
   return (
@@ -29,6 +32,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/routes" element={<RoutesPage />} />
       </Route>
     </Routes>
   );

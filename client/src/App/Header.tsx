@@ -57,9 +57,11 @@ export default function Header(): JSX.Element {
           </select>
         </div>
         <div>
-          <h1>Мартшруты путешествий</h1>
-
-          <Link to="/profile"> Profile </Link>
+          <div className="route">
+            <Link to="/routes">
+              <h1>Мартшруты путешествий</h1>
+            </Link>
+          </div>
         </div>
         <div className="blog-container">
           <Link to="/blog">

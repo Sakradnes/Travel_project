@@ -10,7 +10,7 @@ export type User = {
   email?: string;
   isAdmin?: boolean;
   avatar?: string;
-  PhotoAlbums?: PhotoAlbums[];
+  photoAlbums: PhotoAlbums[];
 };
 
 export type State = {

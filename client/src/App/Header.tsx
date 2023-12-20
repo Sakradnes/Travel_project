@@ -11,6 +11,7 @@ export default function Header(): JSX.Element {
   const navigate = useNavigate();
   const { user, isLoggedIn } = useSelector((store: RootState) => store.auth);
   const locations = useSelector((store: RootState) => store.location.locations);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function Header(): JSX.Element {
         </div>
         <div>
           <h1>Мартшруты путешествий</h1>
+
         </div>
         <div className="blog-container">
           <Link to="/blog">

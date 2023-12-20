@@ -18,6 +18,11 @@ export const check = createAsyncThunk('auth/check', () => api.userCheck());
 
 export const logout = createAsyncThunk('auth/logout', () => api.logOut());
 
+export const addPhotoAlbum = createAsyncThunk(
+  'profile/addPhoto',
+  ({ name, img }: { name: string; img: string }) => api.addFetchPhoto({ name, img }),
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -50,6 +55,13 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logout.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addPhotoAlbum.fulfilled, (state, action) => {
+        state.user?.PhotoAlbums.push(action.payload);
+        state.error = undefined;
+      })
+      .addCase(addPhotoAlbum.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

@@ -14,7 +14,7 @@ export default function Header(): JSX.Element {
   const locations = useSelector((store: RootState) => store.location.locations);
 
 
-  const user = useSelector((store: RootState) => store.auth.user);
+  // const user = useSelector((store: RootState) => store.auth.user);
 
 
  

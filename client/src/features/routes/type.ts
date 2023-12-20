@@ -1,6 +1,7 @@
 export type State = {
   routes: Route[];
-  error: undefined | string;
+  loading: boolean | undefined;
+  error: string | null;
 };
 
 export type Route = {
@@ -8,7 +9,4 @@ export type Route = {
   name: string;
   description: string;
   img: string;
-  userId: number;
-  locationId: number;
-  optionId: number;
 };

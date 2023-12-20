@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { State } from '../type';
 
 export const fetchRoutes = createAsyncThunk('routes/fetchRoutes', async () => {
   const response = await fetch('/api/routes');
@@ -7,10 +8,11 @@ export const fetchRoutes = createAsyncThunk('routes/fetchRoutes', async () => {
   }
 
   const data = await response.json();
-  return data.routes;
+
+  return data;
 });
 
-const initialState = { routes: [], loading: false, error: null };
+const initialState: State = { routes: [], loading: false, error: null };
 
 const routeSlice = createSlice({
   name: 'routes',
@@ -20,7 +22,7 @@ const routeSlice = createSlice({
     builder
       .addCase(fetchRoutes.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(fetchRoutes.fulfilled, (state, action) => {
         state.loading = false;

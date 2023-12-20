@@ -15,10 +15,11 @@ import { getAllBlogs } from '../features/blog/BlogList';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(check());
     dispatch(getAllBlogs());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Routes>

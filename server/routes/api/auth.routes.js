@@ -33,14 +33,11 @@ router.post('/login', async (req, res) => {
           })
           .status(200)
           .json({
-            message: 'ok',
-            user: {
-              name: user.name,
-              avatar: user.avatarId,
-              id: user.id,
-              isAdmin: user.isAdmin,
-              email: user.email,
-            },
+            name: user.name,
+            avatar: user.avatarId,
+            id: user.id,
+            isAdmin: user.isAdmin,
+            email: user.email,
           });
       } else {
         res

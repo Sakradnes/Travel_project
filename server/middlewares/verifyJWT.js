@@ -14,7 +14,12 @@ function verifyRefreshToken(req, res, next) {
 
     // сгенерируем  новые jwt токены
     const { accessToken, refreshToken } = generateTokens({
-      user: { id: user.id, name: user.name, email: user.email },
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
     });
 
     // Возвращаем токены в httpOnly cookie при ответе

@@ -8,6 +8,7 @@ const initialState: State = {
 };
 
 export const loadEvents = createAsyncThunk('load/events', () => api.initEventFetch());
+export const addEvents = createAsyncThunk('add/event', (obj: FormData) => api.addFetchEvent(obj));
 
 const eventSlice = createSlice({
   name: 'events',
@@ -19,6 +20,12 @@ const eventSlice = createSlice({
         state.events = action.payload;
       })
       .addCase(loadEvents.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addEvents.fulfilled, (state, action) => {
+        state.events.push(action.payload);
+      })
+      .addCase(addEvents.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

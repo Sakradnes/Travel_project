@@ -21,9 +21,9 @@ router.post("/login", async (req, res) => {
             email: user.email,
             name: user.name,
             lastname: user.lastname,
-            avatarId: user.avatarId,
+            avatar: user.avatar,
             isAdmin: user.isAdmin,
-            photoAlbum: user.PhotoAlbums,
+            PhotoAlbums: user.PhotoAlbums,
           },
         });
         res
@@ -41,11 +41,11 @@ router.post("/login", async (req, res) => {
             message: "ok",
             user: {
               name: user.name,
-              avatar: user.avatarId,
+              avatar: user.avatar,
               id: user.id,
               isAdmin: user.isAdmin,
               email: user.email,
-              photoAlbum: user.PhotoAlbums,
+              PhotoAlbums: user.PhotoAlbums,
             },
 
           });
@@ -113,7 +113,7 @@ router.post("/registration", async (req, res) => {
           email,
           avatar: user.avatar,
           isAdmin: user.isAdmin,
-          photoAlbum: [],
+          PhotoAlbums: [],
         },
       });
     }

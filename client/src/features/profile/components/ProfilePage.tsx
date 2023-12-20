@@ -52,7 +52,7 @@ function ProfilePage(): JSX.Element {
         }}
       >
         <Slider {...sliderSettings}>
-          {user?.PhotoAlbums.map((photo) => (
+          {user?.PhotoAlbums?.map((photo) => (
             <div key={photo.id}>
               <img
                 style={{

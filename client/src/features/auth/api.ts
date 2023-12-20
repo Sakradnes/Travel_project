@@ -25,7 +25,7 @@ export const loginFetch = async (obj: Login): Promise<User> => {
     throw message;
   }
   const data = await res.json();
-  return data;
+  return data.user;
 };
 
 export const logOut = async (): Promise<undefined> => {

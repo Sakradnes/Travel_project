@@ -1,4 +1,4 @@
-export type PhotoAlbums = {
+export type PhotoAlbum = {
   id: number;
   userId: number;
   name: string;
@@ -10,7 +10,7 @@ export type User = {
   email?: string;
   isAdmin?: boolean;
   avatar?: string;
-  photoAlbums: PhotoAlbums[];
+  PhotoAlbums: PhotoAlbum[];
 };
 
 export type State = {

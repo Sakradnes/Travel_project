@@ -13,11 +13,6 @@ export default function Header(): JSX.Element {
   const { user, isLoggedIn } = useSelector((store: RootState) => store.auth);
   const locations = useSelector((store: RootState) => store.location.locations);
 
-
-  // const user = useSelector((store: RootState) => store.auth.user);
-
-
- 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -62,14 +57,9 @@ export default function Header(): JSX.Element {
           </select>
         </div>
         <div>
-
-
           <h1>Мартшруты путешествий</h1>
 
           <Link to="/profile"> Profile </Link>
-
-       
-
         </div>
         <div className="blog-container">
           <Link to="/blog">

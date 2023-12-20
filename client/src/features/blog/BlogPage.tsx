@@ -1,23 +1,21 @@
-// BlogPage.js
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getAllBlogs } from './BlogList';
 import type { RootState } from '../../store/store';
 
-function BlogPage () :JSX.Element{
+function BlogPage(): JSX.Element {
   const { posts, loading, error } = useSelector((state: RootState) => state.blog);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Загрузка...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>Ошибка: {error}</p>;
   }
 
   return (
     <div>
-      <h1>Blog Posts</h1>
+      <h1>Посты в блоге</h1>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
@@ -28,6 +26,6 @@ function BlogPage () :JSX.Element{
       </ul>
     </div>
   );
-};
+}
 
 export default BlogPage;

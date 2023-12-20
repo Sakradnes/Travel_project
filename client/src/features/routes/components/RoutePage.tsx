@@ -13,7 +13,6 @@ function RoutesPage(): JSX.Element {
   if (error) {
     return <p>Ошибка: {error}</p>;
   }
-
   return (
     <div>
       <h1>Маршруты</h1>

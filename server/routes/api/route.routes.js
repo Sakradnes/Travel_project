@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { Routes } = require('../../db/models');
+const { Route } = require('../../db/models');
 
-router.get('/routes', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const routesMaps = await Routes.findAll({ raw: true });
-    console.log(routesMaps);
+    const routesMaps = await Route.findAll({ raw: true });
     res.status(200).json(routesMaps);
   } catch (error) {
     console.log(error);

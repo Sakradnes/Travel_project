@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../store/store';
+import type { RootState } from '../../../store/store';
+import type { Post } from '../type';
 
 function BlogPage(): JSX.Element {
   const { posts, loading, error } = useSelector((state: RootState) => state.blog);
@@ -17,7 +18,7 @@ function BlogPage(): JSX.Element {
     <div>
       <h1>Посты в блоге</h1>
       <ul>
-        {posts.map((post) => (
+        {posts.map((post: Post) => (
           <li key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>

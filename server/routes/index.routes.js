@@ -10,7 +10,7 @@ router.use('/api/auth', authRouter);
 router.use('/api/profile', profileRouter);
 router.use('/api/locations', locationsRouter);
 router.use('/api/events', eventsRouter);
-router.use('/api/route', routeRouter);
+router.use('/api/routes', routeRouter);
 
 // router.use(rejectIfNotAuthorized); // защита роутов ниже от неаутентицированных пользователей
 

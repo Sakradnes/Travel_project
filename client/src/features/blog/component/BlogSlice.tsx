@@ -9,7 +9,6 @@ export const fetchPosts = createAsyncThunk('blog/fetchPosts', async () => {
   }
   const data = await response.json();
   return data.articles;
-
 });
 
 const initialState = { posts: [], loading: false, error: null };

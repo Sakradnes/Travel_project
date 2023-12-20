@@ -3,10 +3,12 @@ import { differenceInCalendarDays } from 'date-fns';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../store/store';
+import { type RootState, useAppDispatch } from '../store/store';
 import ModalEvent from './ModalEvent';
 import { loadEvents } from '../features/event/eventSlice';
 import ModalAdd from './ModalAdd';
+import ModalChange from './ModalChange';
+import { Event } from '../features/event/type/eventType';
 
 type ValuePiece = Date | null;
 
@@ -14,9 +16,10 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function MainPage(): JSX.Element {
   const [value, onChange] = useState<Value>(new Date());
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState<Event>();
   const [showModal, setShowModal] = useState(false);
   const [viewForm, setViewForm] = useState<'ADD' | 'Change' | 'Delete'>();
+  const [dateEvent, setDateEvent] = useState<Date>();
 
   const dispatch = useAppDispatch();
 
@@ -51,6 +54,7 @@ export default function MainPage(): JSX.Element {
         setShowModal(true);
       }
     });
+    setDateEvent(date);
   };
 
   return (
@@ -79,7 +83,8 @@ export default function MainPage(): JSX.Element {
       </div>
       {user?.isAdmin ? (
         <>
-          {viewForm === 'ADD' ? <ModalAdd /> : ''}
+          {viewForm === 'ADD' ? <ModalAdd dateEvent={dateEvent} /> : ''}
+          {viewForm === 'ADD' ? <ModalChange event={event} /> : ''}
           {viewForm ? (
             <>
               <button onClick={() => setViewForm(undefined)}>Закрыть</button>
@@ -90,7 +95,7 @@ export default function MainPage(): JSX.Element {
                 <button onClick={() => setViewForm('ADD')}>Добавить</button>
               </div>
               <div>
-                <button>Изменить</button>
+                <button onClick={() => setViewForm('Change')}>Изменить</button>
               </div>
               <div>
                 <button>Удалить</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
+import type { RootState } from '../../../store/store';
 
 function RoutesPage(): JSX.Element {
   const { routes, loading, error } = useSelector((state: RootState) => state.routes);

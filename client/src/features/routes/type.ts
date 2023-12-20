@@ -1,3 +1,8 @@
+export type State = {
+  routes: Route[];
+  error: undefined | string;
+};
+
 export type Route = {
   id: number;
   name: string;

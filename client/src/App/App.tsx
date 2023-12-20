@@ -16,10 +16,12 @@ import { fetchPosts } from '../features/blog/BlogSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(check());
     dispatch(fetchPosts());
   }, [dispatch]);
+
 
   return (
     <Routes>

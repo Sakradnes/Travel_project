@@ -8,7 +8,6 @@ import { logout } from '../features/auth/authSlice';
 
 export default function Header(): JSX.Element {
   const [city, setCity] = useState(1);
-
   const navigate = useNavigate();
   const { user, isLoggedIn } = useSelector((store: RootState) => store.auth);
   const locations = useSelector((store: RootState) => store.location.locations);
@@ -59,7 +58,6 @@ export default function Header(): JSX.Element {
         <div>
           <h1>Мартшруты путешествий</h1>
 
-          <Link to="/profile"> Profile </Link>
         </div>
         <div className="blog-container">
           <Link to="/blog">

@@ -37,6 +37,7 @@ router.post("/login", async (req, res) => {
           })
           .status(200)
           .json({
+
             message: "ok",
             user: {
               name: user.name,
@@ -46,6 +47,7 @@ router.post("/login", async (req, res) => {
               email: user.email,
               photoAlbum: user.PhotoAlbums,
             },
+
           });
       } else {
         res

@@ -5,11 +5,11 @@ export const fetchPosts = createAsyncThunk('blog/fetchPosts', async () => {
     'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=809a03e6eaaa4a91bcfdd2818a0e040b',
   );
   if (!response.ok) {
-    return Error('Failed to fetch data');
+    return Error('Error');
   }
-
   const data = await response.json();
   return data.articles;
+
 });
 
 const initialState = { posts: [], loading: false, error: null };

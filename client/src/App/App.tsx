@@ -11,13 +11,13 @@ import { check } from '../features/auth/authSlice';
 
 import ProfilePage from '../features/profile/components/ProfilePage';
 import BlogPage from '../features/blog/BlogPage';
-import { getAllBlogs } from '../features/blog/BlogList';
+// import { getAllBlogs } from '../features/blog/BlogList';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(check());
-    dispatch(getAllBlogs());
+    // dispatch(getAllBlogs());
   }, [dispatch]);
 
   return (

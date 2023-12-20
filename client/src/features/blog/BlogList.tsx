@@ -1,8 +1,8 @@
 
-import { fetchPosts } from './BlogSlice';
+// import { fetchPosts } from './BlogSlice';
 
-const getAllBlogs = () => (dispatch) => {
-  return dispatch(fetchPosts());
-};
+// const getAllBlogs = () => (dispatch) => {
+//   return dispatch(fetchPosts());
+// };
 
-export { getAllBlogs };
+// export { getAllBlogs };

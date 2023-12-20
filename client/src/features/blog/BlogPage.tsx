@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getAllBlogs } from './BlogList';
 import type { RootState } from '../../store/store';
 
-const BlogPage = () => {
+function BlogPage () :JSX.Element{
   const { posts, loading, error } = useSelector((state: RootState) => state.blog);
 
   if (loading) {

@@ -1,4 +1,4 @@
-import type { Login, Rega, User } from './type/authTypes';
+import type { Login, PhotoAlbums, Rega, User } from './type/authTypes';
 
 export const registrationFetch = async (obj: Rega): Promise<User> => {
   const res = await fetch('/api/auth/registration', {
@@ -43,3 +43,23 @@ export async function userCheck(): Promise<undefined> {
     return data.user;
   }
 }
+
+export const addFetchPhoto = async ({
+  name,
+  img,
+}: {
+  name: string;
+  img: string;
+}): Promise<PhotoAlbums> => {
+  const res = await fetch(`/api/profile`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify({ name, img }),
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  const data = await res.json();
+  return data;
+};

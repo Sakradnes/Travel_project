@@ -1,16 +1,19 @@
-const router = require('express').Router();
-const bcrypt = require('bcrypt');
+const router = require("express").Router();
+const bcrypt = require("bcrypt");
 
-const { User } = require('../../db/models');
-const generateTokens = require('../../utils/authUtils');
-const cookiesConfig = require('../../config/cookiesConfig');
+const { User, PhotoAlbum } = require("../../db/models");
+const generateTokens = require("../../utils/authUtils");
+const cookiesConfig = require("../../config/cookiesConfig");
 
 // аутентицикация существующего пользователя
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (email && password) {
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({
+        where: { email },
+        include: { model: PhotoAlbum },
+      });
       if (user && (await bcrypt.compare(password, user.password))) {
         const { accessToken, refreshToken } = generateTokens({
           user: {
@@ -20,6 +23,7 @@ router.post('/login', async (req, res) => {
             lastname: user.lastname,
             avatarId: user.avatarId,
             isAdmin: user.isAdmin,
+            photoAlbum: user.PhotoAlbums,
           },
         });
         res
@@ -33,22 +37,23 @@ router.post('/login', async (req, res) => {
           })
           .status(200)
           .json({
-            message: 'ok',
+            message: "ok",
             user: {
               name: user.name,
               avatar: user.avatarId,
               id: user.id,
               isAdmin: user.isAdmin,
               email: user.email,
+              photoAlbum: user.PhotoAlbums,
             },
           });
       } else {
         res
           .status(400)
-          .json({ message: 'Ваша почта или пароль не соответствуют' });
+          .json({ message: "Ваша почта или пароль не соответствуют" });
       }
     } else {
-      res.status(400).send('заполните все поля');
+      res.status(400).send("заполните все поля");
     }
   } catch (err) {
     console.log(err.message);
@@ -57,13 +62,13 @@ router.post('/login', async (req, res) => {
 });
 
 // создание нового пользователя
-router.post('/registration', async (req, res) => {
+router.post("/registration", async (req, res) => {
   const { email, password, name } = req.body;
 
-  if (name === '' || email === '' || password === '') {
+  if (name === "" || email === "" || password === "") {
     return res
       .status(400)
-      .json({ success: false, message: 'Заполните все поля' });
+      .json({ success: false, message: "Заполните все поля" });
   }
 
   try {
@@ -72,7 +77,7 @@ router.post('/registration', async (req, res) => {
     if (foundUser) {
       return res
         .status(400)
-        .json({ success: false, message: 'Такая почта уже зарегистрированна' });
+        .json({ success: false, message: "Такая почта уже зарегистрированна" });
     } else {
       const hash = await bcrypt.hash(password, 10);
       const user = await User.create({
@@ -99,13 +104,14 @@ router.post('/registration', async (req, res) => {
       });
 
       return res.status(201).json({
-        message: 'ok',
+        message: "ok",
         user: {
           name,
           id: user.id,
           email,
           avatar: user.avatar,
           isAdmin: user.isAdmin,
+          photoAlbum: [],
         },
       });
     }
@@ -115,21 +121,24 @@ router.post('/registration', async (req, res) => {
 });
 
 // при логауте чистим все куки
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   try {
     res.locals.user = undefined;
     res.clearCookie(cookiesConfig.access).clearCookie(cookiesConfig.refresh);
-    res.status(200).json({ message: 'success' });
+    res.status(200).json({ message: "success" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
 // проверка активной сессии и отправка информации о пользователе
-router.get('/check', async (req, res) => {
+router.get("/check", async (req, res) => {
   const { user } = res.locals; // ищем активную сессию
 
-  const userData = await User.findByPk(user?.id); // ищем пользователя в бд(чтобы подтнуть информацию о его профиле)
+  const userData = await User.findOne({
+    where: { email: user.email },
+    include: { model: PhotoAlbum },
+  }); // ищем пользователя в бд(чтобы подтнуть информацию о его профиле)
   if (user && userData) {
     delete userData.password; //  чтобы не отправлять пароль на клиент
     res.json({

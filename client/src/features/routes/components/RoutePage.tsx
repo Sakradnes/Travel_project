@@ -6,7 +6,7 @@ function RoutesPage(): JSX.Element {
   const { routes, loading, error } = useSelector((state: RootState) => state.routes);
 
   if (loading) {
-    return <p>Загрузка маршрутов...</p>;
+    return <p>Загрузка маршрутов</p>;
   }
 
   if (error) {

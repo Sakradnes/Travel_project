@@ -21,6 +21,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      coordinateLatitude: {
+        allowNull: false,
+        type: Sequelize.FLOAT,
+      },
+      coordinateLongitude: {
+        allowNull: false,
+        type: Sequelize.FLOAT,
+      },
       name: {
         allowNull: false,
         type: Sequelize.TEXT,

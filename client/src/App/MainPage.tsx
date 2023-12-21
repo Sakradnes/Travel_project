@@ -8,7 +8,8 @@ import ModalEvent from './ModalEvent';
 import { loadEvents } from '../features/event/eventSlice';
 import ModalAdd from './ModalAdd';
 import ModalChange from './ModalChange';
-import { Event } from '../features/event/type/eventType';
+import { type Event } from '../features/event/type/eventType';
+import ModalDelete from './ModalDelete';
 
 type ValuePiece = Date | null;
 
@@ -83,22 +84,49 @@ export default function MainPage(): JSX.Element {
       </div>
       {user?.isAdmin ? (
         <>
-          {viewForm === 'ADD' ? <ModalAdd dateEvent={dateEvent} /> : ''}
-          {viewForm === 'ADD' ? <ModalChange event={event} /> : ''}
+          {viewForm === 'ADD' ? <ModalAdd dateEvent={dateEvent} setViewForm={setViewForm} /> : ''}
+          {event ? (
+            viewForm === 'Change' ? (
+              <ModalChange
+                event={event}
+                setEvent={setEvent}
+                dateEvent={dateEvent}
+                setViewForm={setViewForm}
+              />
+            ) : (
+              ''
+            )
+          ) : null}
+          {event ? (
+            viewForm === 'Delete' ? (
+              <ModalDelete event={event} setViewForm={setViewForm} setShowModal={setShowModal} />
+            ) : (
+              ''
+            )
+          ) : null}
+          {}
           {viewForm ? (
             <>
-              <button onClick={() => setViewForm(undefined)}>Закрыть</button>
+              <button type="button" onClick={() => setViewForm(undefined)}>
+                Закрыть
+              </button>
             </>
           ) : (
             <>
               <div>
-                <button onClick={() => setViewForm('ADD')}>Добавить</button>
+                <button type="button" onClick={() => setViewForm('ADD')}>
+                  Добавить
+                </button>
               </div>
               <div>
-                <button onClick={() => setViewForm('Change')}>Изменить</button>
+                <button type="button" onClick={() => setViewForm('Change')}>
+                  Изменить
+                </button>
               </div>
               <div>
-                <button>Удалить</button>
+                <button type="button" onClick={() => setViewForm('Delete')}>
+                  Удалить
+                </button>
               </div>
             </>
           )}

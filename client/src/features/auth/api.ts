@@ -1,4 +1,7 @@
+
 import type { IdPhotoAlbum, Login, PhotoAlbum, Rega, User } from './type/authTypes';
+
+
 
 export const registrationFetch = async (obj: Rega): Promise<User> => {
   const res = await fetch('/api/auth/registration', {
@@ -44,7 +47,9 @@ export async function userCheck(): Promise<undefined> {
   }
 }
 
+
 export const addFetchPhoto = async (obj: FormData): Promise<PhotoAlbum[]> => {
+
   const res = await fetch(`/api/profile`, {
     method: 'POST',
     body: obj,

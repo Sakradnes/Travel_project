@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
+      coordinateLatitude: {
+        allowNull: false,
+        type: DataTypes.FLOAT,
+      },
+      coordinateLongitude: {
+        allowNull: false,
+        type: DataTypes.FLOAT,
+      },
     },
     {
       sequelize,

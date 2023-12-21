@@ -6,6 +6,7 @@ export type Event = {
   description: string;
   locationId: number;
 };
+export type Change = Omit<Event, 'locationId'>;
 
 export type State = {
   events: Event[];

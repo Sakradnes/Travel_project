@@ -18,28 +18,27 @@ function RoutesPage(): JSX.Element {
   if (error) {
     return <p>Ошибка: {error}</p>;
   }
+
   return (
+
     <div>
       <h1>Маршруты</h1>
       <div>
         {routesIslocation.map((route: Route) => (
           <div key={route.id}>
+
             <img
-              style={{
-                width: '300px',
-                height: '300px',
-                objectFit: 'cover',
-                borderRadius: '10px',
-                marginBottom: '10px',
-              }}
               src={route.img}
               alt="..."
-              className="image"
+              className="rounded-full mx-auto mb-2"
+              style={{ width: '300px', height: '300px', objectFit: 'cover' }}
             />
+
             <Link to={`/routes/${route.id}`}>
-              <h2>{route.name}</h2>
+              <h2 className="text-xl font-bold mb-2">{route.name}</h2>
             </Link>
             <p>{route.description}</p>
+
           </div>
         ))}
       </div>

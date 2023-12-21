@@ -17,6 +17,7 @@ import { fetchRoutes } from '../features/routes/components/RouteSlice';
 import RoutesPage from '../features/routes/components/RoutePage';
 import EventPage from '../features/event/components/EventPage';
 import { loadEvents } from '../features/event/eventSlice';
+import RouteCard from '../features/routes/components/RouteCard';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -38,6 +39,7 @@ function App(): JSX.Element {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/routes" element={<RoutesPage />} />
+        <Route path="/routes/:id" element={<RouteCard />} />
       </Route>
     </Routes>
   );

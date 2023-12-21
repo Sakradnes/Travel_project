@@ -1,6 +1,8 @@
 export type Location = {
   id: number;
   name: string;
+  coordinateLatitude: number;
+  coordinateLongitude: number;
 };
 
 export type State = {

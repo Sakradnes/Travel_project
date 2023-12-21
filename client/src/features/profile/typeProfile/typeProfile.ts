@@ -1,6 +1,6 @@
-import { PhotoAlbums } from '../../auth/type/authTypes';
+import type { PhotoAlbum } from '../../auth/type/authTypes';
 
 export type State = {
-  photoAlbums: PhotoAlbums[];
+  photoAlbums: PhotoAlbum[];
   error: undefined | string;
 };

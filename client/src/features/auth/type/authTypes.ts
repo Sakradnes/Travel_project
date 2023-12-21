@@ -1,9 +1,11 @@
 export type PhotoAlbum = {
   id: number;
   userId: number;
-  name: string;
+  name: string | undefined;
   img: string;
 };
+
+export type IdPhotoAlbum = PhotoAlbum['id'];
 export type User = {
   id?: number;
   name?: string;

@@ -1,4 +1,4 @@
-import type { Login, PhotoAlbums, Rega, User } from './type/authTypes';
+import type { IdPhotoAlbum, Login, PhotoAlbum, Rega, User } from './type/authTypes';
 
 export const registrationFetch = async (obj: Rega): Promise<User> => {
   const res = await fetch('/api/auth/registration', {
@@ -44,17 +44,35 @@ export async function userCheck(): Promise<undefined> {
   }
 }
 
-export const addFetchPhoto = async ({
-  name,
-  img,
-}: {
-  name: string;
-  img: string;
-}): Promise<PhotoAlbums> => {
+export const addFetchPhoto = async (obj: FormData): Promise<PhotoAlbum[]> => {
   const res = await fetch(`/api/profile`, {
     method: 'POST',
-    headers: { 'Content-Type': 'Application/json' },
-    body: JSON.stringify({ name, img }),
+    body: obj,
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  const data = await res.json();
+  return data;
+};
+
+export const deleteFetchPhoto = async (photoId: number): Promise<IdPhotoAlbum> => {
+  const res = await fetch(`/api/profile/${photoId}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  const data = await res.json();
+  return data;
+};
+
+export const editUserFetch = async (obj: FormData): Promise<User> => {
+  const res = await fetch(`/api/profile/edit`, {
+    method: 'PUT',
+    body: obj,
   });
   if (!res.ok) {
     const { message } = await res.json();

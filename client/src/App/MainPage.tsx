@@ -107,18 +107,26 @@ export default function MainPage(): JSX.Element {
           {}
           {viewForm ? (
             <>
-              <button onClick={() => setViewForm(undefined)}>Закрыть</button>
+              <button type="button" onClick={() => setViewForm(undefined)}>
+                Закрыть
+              </button>
             </>
           ) : (
             <>
               <div>
-                <button onClick={() => setViewForm('ADD')}>Добавить</button>
+                <button type="button" onClick={() => setViewForm('ADD')}>
+                  Добавить
+                </button>
               </div>
               <div>
-                <button onClick={() => setViewForm('Change')}>Изменить</button>
+                <button type="button" onClick={() => setViewForm('Change')}>
+                  Изменить
+                </button>
               </div>
               <div>
-                <button onClick={() => setViewForm('Delete')}>Удалить</button>
+                <button type="button" onClick={() => setViewForm('Delete')}>
+                  Удалить
+                </button>
               </div>
             </>
           )}

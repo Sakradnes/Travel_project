@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const { Route } = require('../../db/models');
+const { Route, Way } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const routesMaps = await Route.findAll({ raw: true });
+    const routesMaps = await Route.findAll({
+      include: [{ model: Way }],
+    });
+    console.log(routesMaps);
     res.status(200).json(routesMaps);
   } catch (error) {
     console.log(error);
@@ -11,14 +14,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:idRoute', async (req, res) => {
-  const { idRoute } = req.params;
-  try {
-    const routesMaps = await Route.findOne({ where: { id: idRoute } });
-    res.status(200).json(routesMaps);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-});
 module.exports = router;

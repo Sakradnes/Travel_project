@@ -8,11 +8,12 @@ export const fetchRoutes = createAsyncThunk('routes/fetchRoutes', async () => {
   }
 
   const data = await response.json();
+  console.log(data);
 
   return data;
 });
 
-const initialState: State = { routes: [], loading: false, error: null };
+const initialState: State = { routes: [], loading: false, error: undefined };
 
 const routeSlice = createSlice({
   name: 'routes',
@@ -25,8 +26,8 @@ const routeSlice = createSlice({
         state.error = undefined;
       })
       .addCase(fetchRoutes.fulfilled, (state, action) => {
-        state.loading = false;
         state.routes = action.payload;
+        state.loading = false;
       })
       .addCase(fetchRoutes.rejected, (state, action) => {
         state.loading = false;

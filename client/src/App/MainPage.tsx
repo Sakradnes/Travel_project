@@ -157,42 +157,27 @@ export default function MainPage(): JSX.Element {
             )}
             {event && viewForm === 'Delete' && (
               <ModalDelete event={event} setViewForm={setViewForm} setShowModal={setShowModal} />
-
+            )}
+            {viewForm ? (
+              <button onClick={() => setViewForm(undefined)}>Закрыть</button>
             ) : (
-              ''
-            )
-          ) : null}
-          {}
-          {viewForm ? (
-            <>
-              <button type="button" onClick={() => setViewForm(undefined)}>
-                Закрыть
-              </button>
-            </>
-          ) : (
-            <>
-              <div>
-                <button type="button" onClick={() => setViewForm('ADD')}>
-                  Добавить
-                </button>
-              </div>
-              <div>
-                <button type="button" onClick={() => setViewForm('Change')}>
-                  Изменить
-                </button>
-              </div>
-              <div>
-                <button type="button" onClick={() => setViewForm('Delete')}>
-                  Удалить
-                </button>
-              </div>
-            </>
-          )}
-        </>
-      ) : (
-        ''
-      )}
->>>>>>> dev
+              <>
+                <div className="inputAdmin">
+                  <div>
+                    <button onClick={() => setViewForm('ADD')}>Добавить</button>
+                  </div>
+                  <div>
+                    <button onClick={() => setViewForm('Change')}>Изменить</button>
+                  </div>
+                  <div>
+                    <button onClick={() => setViewForm('Delete')}>Удалить</button>
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

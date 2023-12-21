@@ -3,7 +3,13 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store/store';
 import { addEvents } from '../features/event/eventSlice';
 
-export default function ModalAdd({ dateEvent }: { dateEvent: any }): JSX.Element {
+export default function ModalAdd({
+  setViewForm,
+  dateEvent,
+}: {
+  dateEvent: any;
+  setViewForm: (status: 'ADD' | 'Change' | 'Delete' | undefined) => void;
+}): JSX.Element {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [url, setUrl] = useState<File | null>(null);
@@ -11,8 +17,6 @@ export default function ModalAdd({ dateEvent }: { dateEvent: any }): JSX.Element
   const dispatch = useAppDispatch();
 
   const isLocation = useSelector((store: RootState) => store.location.isLocation);
-  console.log(isLocation);
-  
 
   const eventAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -24,6 +28,7 @@ export default function ModalAdd({ dateEvent }: { dateEvent: any }): JSX.Element
     if (url) {
       formData.append('img', url);
       dispatch(addEvents(formData));
+      setViewForm(undefined);
     }
   };
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

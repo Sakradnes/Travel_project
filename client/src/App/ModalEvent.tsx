@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ModalEvent({
   setShowModal,
@@ -14,7 +15,9 @@ export default function ModalEvent({
           <img src={event.img} alt={event.name} />
         </div>
         <div>
-          <h1>{event.name}</h1>
+          <Link to={`/event/${event.id}`}>
+            <h1>{event.name}</h1>
+          </Link>
         </div>
         <p className="textCalendar">{`${event.description.slice(0, 100)}...`}</p>
       </div>

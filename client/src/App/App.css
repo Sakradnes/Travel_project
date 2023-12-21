@@ -1,5 +1,15 @@
-#root {
-  margin: 0 auto;
+.header {
+  display: flex;
+  justify-content: space-around;
+  max-width: none;
+
+  background-size: cover;
+  padding-bottom: 2px;
+  background-color: rgba(255, 255, 255, 0.261); /* Делаем фон прозрачным */
+}
+
+.container {
+  max-width: 1280px;
   text-align: center;
 }
 
@@ -8,13 +18,19 @@
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  filter: drop-shadow(0 0 2em #646cffaa);
+  font-style: italic; /* Добавляем стиль italic */
+  font-size: 110%; /* Увеличиваем размер на 10% */
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
 .logo.elbrus:hover {
   filter: drop-shadow(0 0 2em rgb(103, 49, 251));
 }
@@ -42,17 +58,13 @@
   color: #888;
 }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  max-width: none;
-  background-image: url(/header.jpg);
-  background-size: cover;
-  padding-bottom: 2px;
-}
 .container {
   max-width: 1280px;
   text-align: center;
+}
+
+.container {
+  display: flex;
 }
 
 .react-calendar .highlight {
@@ -113,4 +125,52 @@
 }
 .textCalendar {
   word-wrap: break-word;
+}
+
+.calendar {
+  padding-right: 10px;
+  display: flex;
+  width: 320px;
+  justify-content: flex-end;
+}
+.react-calendar {
+  width: 200px;
+  height: 00px;
+
+  border-radius: 20px;
+  padding-right: 10px;
+}
+.containerCalendar {
+  padding-right: 10px;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+.containerBlock {
+  display: flex;
+}
+
+.recklama {
+  display: flex;
+  width: 500px;
+}
+
+.calendar {
+  margin-top: 150px;
+}
+
+.vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px; /* Ширина линии */
+  background-color: #000; /* Цвет линии */
+}
+
+.left-line {
+  left: 0;
+}
+
+.right-line {
+  right: 0;
 }

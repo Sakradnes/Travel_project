@@ -36,33 +36,30 @@ export default function Header(): JSX.Element {
   };
 
   return (
-    <nav className=" header">
-      <div className="flex justify-between items-center container">
+    <nav className="bg-black text-white">
+      <div className="container flex justify-between items-center">
         <Link to="/">
           <div>
-            <img src="/logo.png" style={{ height: 50 }}></img>
+            <img src="/logo.png" style={{ height: 50 }} alt="Logo" />
           </div>
         </Link>
         <div>
-          <label htmlFor="location">Выберите локацию:</label>
-          <select onChange={handleSelect} value={city}>
-            {locations.map((locantion) => {
-              return (
-                <option key={locantion.id} value={locantion.id}>
-                  {locantion.name}
-                </option>
-              );
-            })}
+          <label htmlFor="location" className="mr-2">
+            Выберите локацию:
+          </label>
+          <select onChange={handleSelect} value={city} className="bg-black text-white p-1 rounded">
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
+            ))}
+
           </select>
         </div>
-        <div>
-
-          <div className="route">
-            <Link to="/routes">
-              <h1>Мартшруты путешествий</h1>
-            </Link>
-          </div>
-
+        <div className="route">
+          <Link to="/routes">
+            <h1 className="text-xl">Маршруты путешествий</h1>
+          </Link>
         </div>
         <div className="blog-container">
           <Link to="/blog">
@@ -71,29 +68,27 @@ export default function Header(): JSX.Element {
             </div>
           </Link>
         </div>
-        <div className="flex ">
+        <div className="flex">
           {user && isLoggedIn ? (
-            <>
-              <div className="dropdown">
-                <button className="dropbtn" type="button">
+            <div className="dropdown relative">
+              <button className="dropbtn">Мой профиль</button>
+              <div className="dropdown-content absolute hidden bg-white text-black">
+                <Link to="/profile" className="block p-2 hover:bg-gray-200">
                   Мой профиль
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="block p-2 hover:bg-gray-200"
+                >
+                  Выйти
                 </button>
-                <div className="dropdown-content">
-                  <Link to="/profile">
-                    <h1> Мой профиль</h1>
-                  </Link>
-                  <button type="button" onClick={handleLogout}>
-                    <h1>Выйти</h1>
-                  </button>
-                </div>
               </div>
-            </>
+            </div>
           ) : (
             <>
-              <Link to="/registration">
-                <div className="pr-5">
-                  <h1>Регистрация</h1>
-                </div>
+              <Link to="/registration" className="pr-5">
+                <h1>Регистрация</h1>
               </Link>
               <Link to="/login">
                 <div>

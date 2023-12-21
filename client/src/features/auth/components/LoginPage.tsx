@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import type { SubmitHandler } from 'react-hook-form';
@@ -23,6 +23,9 @@ function LoginPage(): JSX.Element {
   const { error, user } = useSelector((store: RootState) => store.auth);
   const navigate = useNavigate();
 
+  const [isEmailFilled, setIsEmailFilled] = useState(false);
+  const [isPasswordFilled, setIsPasswordFilled] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -42,14 +45,46 @@ function LoginPage(): JSX.Element {
   }, [user]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="email" placeholder="email" {...register('email')} />
+    <div className="flex justify-center items-center h-screen">
+      <form
+        className="flex flex-col items-center border border-black border-2 p-8 rounded"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="relative">
+          <input
+            type="email"
+            placeholder="Электронная почта"
+            {...register('email')}
+            className="mb-2 p-2 border border-black border-2"
+            onChange={(e) => setIsEmailFilled(e.target.value.trim().length > 0)}
+          />
+          {isEmailFilled && (
+            <span className="absolute top-0 right-0 mt-2 mr-2 text-black">✔</span>
+          )}
+        </div>
         <span>{errors.email?.message}</span>
-        <input type="password" placeholder="password" {...register('password')} />
+
+        <div className="relative">
+          <input
+            type="password"
+            placeholder="Пароль"
+            {...register('password')}
+            className="mb-2 p-2 border border-black border-2"
+            onChange={(e) =>
+              setIsPasswordFilled(e.target.value.trim().length >= 8)
+            }
+          />
+          {isPasswordFilled && (
+            <span className="absolute top-0 right-0 mt-2 mr-2 text-black">✔</span>
+          )}
+        </div>
         <span>{errors.password?.message}</span>
-        <button type="submit">Войти</button>
+
+        <button type="submit" className="bg-black text-white p-2 rounded">
+          Войти
+        </button>
       </form>
+
       <div>{error}</div>
     </div>
   );

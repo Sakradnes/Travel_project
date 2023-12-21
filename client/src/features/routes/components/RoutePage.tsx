@@ -13,26 +13,19 @@ function RoutesPage(): JSX.Element {
   if (error) {
     return <p>Ошибка: {error}</p>;
   }
+
   return (
-    <div>
-      <h1>Маршруты</h1>
-      <div>
+    <div className="routes">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {routes.map((route: Route) => (
-          <div key={route.id}>
+          <div key={route.id} className="bg-white rounded-md p-4">
             <img
-              style={{
-                width: '300px',
-                height: '300px',
-                objectFit: 'cover',
-                borderRadius: '10px',
-                marginBottom: '10px',
-              }}
               src={route.img}
               alt="..."
-              className="image"
+              className="rounded-full mx-auto mb-2"
+              style={{ width: '300px', height: '300px', objectFit: 'cover' }}
             />
-            <h2>{route.name}</h2>
-            <p>{route.description}</p>
+            <h2 className="text-xl font-bold mb-2">{route.name}</h2>
           </div>
         ))}
       </div>

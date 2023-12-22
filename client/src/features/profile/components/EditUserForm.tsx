@@ -41,11 +41,17 @@ function EditUserForm({
 
   return (
     <form onSubmit={editUser}>
-      <p>Изменить имя пользователя</p>
+      <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px', color: 'white' }}>
+        Изменить имя пользователя
+      </p>
       <input type="text" placeholder="Имя" defaultValue={user?.name} ref={nameInput} />
-      <p>Изменить аватар</p>
+      <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px', color: 'white' }}>
+        Изменить аватар
+      </p>
       <input type="file" placeholder="Аватар" ref={urlInput} />
-      <button type="submit">Изменить</button>
+      <button style={{ color: 'white' }} type="submit">
+        Изменить
+      </button>
     </form>
   );
 }

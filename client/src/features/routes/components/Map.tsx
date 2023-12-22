@@ -61,12 +61,12 @@ export default function Maps({ route }: { route: Route | undefined }): JSX.Eleme
                 properties={{
                   iconContent: `<p>${index + 1}</p>`,
                   balloonContentBody: `
-                  <div>
-                  <img src=${route?.Ways[index].path}/>
-                  <p>${route?.Ways[index].name}</p>
-                   <button data-id=${route?.Ways[index].id} class='some' type='button'>Подробнее</button>
-                   </div>
-            `,
+                    <div>
+                      <img src=${route?.Ways[index].path}/>
+                      <p>${route?.Ways[index].name}</p>
+                      <button data-id=${route?.Ways[index].id} class='some' type='button'>Подробнее</button>
+                    </div>
+                  `,
                 }}
               ></Placemark>
             ))}

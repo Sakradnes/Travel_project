@@ -61,7 +61,9 @@ export default function MainPage(): JSX.Element {
   return (
     <div className="containerBlock">
       <div className="recklama">
-        <p>Реклама</p>
+        <p>Отзывы</p>
+
+        <h2>Здесь вы можете оставить свои отзывы</h2>
       </div>
 
       <div className="mainText lg:w-1/2 text-center lg:text-left relative">

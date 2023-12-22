@@ -61,9 +61,71 @@ export default function MainPage(): JSX.Element {
   return (
     <div className="containerBlock">
       <div className="recklama">
-        <p>Отзывы</p>
+        <h2 style={{ fontWeight: 'bold' }}>Отзывы:</h2>
 
-        <h2>Здесь вы можете оставить свои отзывы</h2>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://i.pinimg.com/736x/5f/61/a0/5f61a0e798a7291ec37bcb79b4f44cad.jpg"
+            alt=""
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Елена</h3>
+          <p>Отличный сайт который помогает выбрать удивительные места для отдыха</p>
+        </div>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://masterpiecer-images.s3.yandex.net/6003b226e821c71:upscaled"
+            alt="User Avatar"
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Анна</h3>
+          <p>Замечательный опыт путешествия! Сайт помог мне найти удивительные места для отдыха.</p>
+        </div>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://masterpiecer-images.s3.yandex.net/be4ff1797e3611ee87de363fac71b015:upscaled"
+            alt="User Avatar"
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Максим</h3>
+          <p>
+            Благодаря этому сайту я открыл для себя уникальные культурные маршруты. Очень
+            рекомендую!
+          </p>
+        </div>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://media.istockphoto.com/id/897384822/ru/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F/%D0%B6%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C-%D0%B8%D0%BA%D0%BE%D0%BD%D0%B0-%D0%BA%D1%80%D1%83%D0%B3%D0%BB%D0%B0%D1%8F-%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D0%B0-%D0%BB%D0%B8%D1%86%D0%BE.jpg?s=612x612&w=0&k=20&c=d8oTmE5olf5u389HYgEJpXMaPvI2mwE94Yyntg56kx4="
+            alt="User Avatar"
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Дарина</h3>
+          <p>Отличные подсказки и рекомендации по маршрутам. Планирование поездки стало проще!</p>
+        </div>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://img.freepik.com/premium-vector/portrait-of-beautiful-women-at-round-frame-avatar-of-female-character-isolated-on-white-background_559729-212.jpg"
+            alt="User Avatar"
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Иван</h3>
+          <p>
+            Этот сайт стал моим надежным путеводителем по интересным местам. Спасибо за отличные
+            рекомендации!
+          </p>
+        </div>
+        <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
+          <img
+            style={{ width: '100px', borderRadius: '50%' }}
+            src="https://i.pinimg.com/474x/dc/81/03/dc81034f22aa20d6b1672a88a7b24d64.jpg"
+            alt="User Avatar"
+          />
+          <h3 style={{ fontWeight: 'bold' }}>Мария</h3>
+          <p>
+            Всегда мечтала о путешествии, и благодаря этому сайту мои мечты стали реальностью.
+            Незабываемые впечатления!
+          </p>
+        </div>
       </div>
 
       <div className="mainText lg:w-1/2 text-center lg:text-left relative">
@@ -72,16 +134,14 @@ export default function MainPage(): JSX.Element {
         <div className="imageMainPage flex flex-col lg:flex-row items-center justify-center bg-gray-500 bg-opacity-20 p-8">
           <div className="lg:w-full mb-8 lg:mb-0 lg:mr-4 flex flex-col space-y-4">
             <div className="block1">
-              <h2 className="mb-4">
-                Откройте для себя увлекательный мир приключений и отдыха!
-              </h2>
+              <h2 className="mb-4">Откройте для себя увлекательный мир приключений и отдыха!</h2>
               <div className="img4">
                 <img
                   src="https://www.worldtrips.com/-/media/Project/TMHCC-MIS/HCCMISdotcom/Demand-Pages/best-travel-websites-person-sitting-on-a-couch-looking-at-phone.jpg?h=350&iar=0&w=675&hash=45AB979F6F3502C858189CDCE15EDD63"
                   alt="..."
                   className="img4-4"
                 />
-              <p>«Ничто так не развивает ум, как путешествие» – Эмиль Золя.</p>
+                <p>«Ничто так не развивает ум, как путешествие» – Эмиль Золя.</p>
               </div>
             </div>
             <div className="img1">
@@ -108,10 +168,9 @@ export default function MainPage(): JSX.Element {
                 alt="..."
                 className="img3-3"
               />
-              <h6 >
+              <h6>
                 Мы создаем возможность для вас путешествовать в стиле, который подходит именно вам.
               </h6>
-             
             </div>
           </div>
         </div>

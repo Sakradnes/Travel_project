@@ -2,7 +2,17 @@ export type State = {
   routes: Route[];
   loading: boolean | undefined;
   error: string | undefined;
+  ratings: Rating[];
 };
+
+export type Rating = {
+  id?: number;
+  routeId: number;
+  userId?: number;
+  rating: number;
+};
+
+
 
 export type Way = {
   id: number;
@@ -23,4 +33,5 @@ export type Route = {
   optionId: number;
   userId: number;
   Ways: Way[];
+  Ratings: Rating[];
 };

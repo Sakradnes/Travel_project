@@ -19,9 +19,11 @@ function BlogPage(): JSX.Element {
       <h1>Посты в блоге</h1>
       <ul>
         {posts.map((post: Post) => (
-          <li key={post.id}>
+          <li key={post.id} style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
             <h2>{post.title}</h2>
-            <p>{post.urlToImage}</p>
+            <img style={{ width: '300px' }} src={post.urlToImage} alt="" />
+            <p>{post.description}</p>
+            <a href={post.url}>Подробнее</a>
           </li>
         ))}
       </ul>

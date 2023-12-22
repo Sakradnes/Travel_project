@@ -3,4 +3,6 @@ export type Post = {
   title: string;
   body: string;
   urlToImage: string;
+  description: string;
+  url: string;
 };

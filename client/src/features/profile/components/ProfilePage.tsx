@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { deletePhotoAlbum } from '../../auth/authSlice';
 import btnDel from '../../../../public/icons8-отмена.svg';
-import EditUserForm from './editUserForm';
+import EditUserForm from './EditUserForm';
 
 function ProfilePage(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -21,11 +21,11 @@ function ProfilePage(): JSX.Element {
 
   const openEditModal = (): void => {
     setEditModal(true);
-  }
+  };
 
   const closeModalEdit = (): void => {
     setEditModal(false);
-  }
+  };
 
   const closeModal = (): void => {
     setViewModal(false);
@@ -84,9 +84,15 @@ function ProfilePage(): JSX.Element {
           marginBottom: '20px',
         }}
       >
-        <img style={{ width: '200px', borderRadius: '50%', overflow: 'hidden' }} src={user?.avatar} alt={user?.name} />
+        <img
+          style={{ width: '200px', borderRadius: '50%', overflow: 'hidden' }}
+          src={user?.avatar}
+          alt={user?.name}
+        />
         <h3>Имя пользователя: {user?.name}</h3>
-        <button onClick={openEditModal} type="button">Редактировать</button>
+        <button onClick={openEditModal} type="button">
+          Редактировать
+        </button>
       </div>
       <div style={{ width: '300px', marginLeft: '20px' }}>
         <Slider {...sliderSettings}>
@@ -121,7 +127,12 @@ function ProfilePage(): JSX.Element {
         <AddPhoto closeModal={closeModal} />
       </Modal>
 
-      <Modal isOpen={editModal} onRequestClose={closeModalEdit} style={customStyles} contentLabel="Example Modal">
+      <Modal
+        isOpen={editModal}
+        onRequestClose={closeModalEdit}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
         <EditUserForm closeModalEdit={closeModalEdit} user={user} />
       </Modal>
     </>

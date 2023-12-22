@@ -8,20 +8,20 @@ import { Route, Way } from '../type';
 export default function Maps({ route }: { route: Route | undefined }): JSX.Element {
   const { locations, isLocation } = useSelector((store: RootState) => store.location);
   const [way, setWay] = useState<Way>();
-  console.log(way);
+
 
   const allCoordinates: [number, number][] = [];
   if (route) {
-    console.log(route);
+
 
     route.Ways.forEach((rout: Way) => {
-      console.log(rout);
+
 
       if (rout) {
         const latitude = Number(rout.coordinateLatitude);
         const longitude = Number(rout.coordinateLongitude);
         allCoordinates.push([latitude, longitude]);
-        console.log(allCoordinates);
+
       }
     });
   }

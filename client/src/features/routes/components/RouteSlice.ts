@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { State } from '../type';
+import * as api from '../../auth/api';
 
 export const fetchRoutes = createAsyncThunk('routes/fetchRoutes', async () => {
   const response = await fetch('/api/routes');
@@ -8,10 +9,16 @@ export const fetchRoutes = createAsyncThunk('routes/fetchRoutes', async () => {
   }
 
   const data = await response.json();
-  console.log(data);
 
   return data;
 });
+
+export const fetchRatings = createAsyncThunk(
+  'routes/fetchRatings',
+  async ({ routeId, rating }: { routeId: number; rating: number }) => {
+    api.setRatingFetch(routeId, rating);
+  },
+);
 
 const initialState: State = { routes: [], loading: false, error: undefined };
 
@@ -31,6 +38,13 @@ const routeSlice = createSlice({
       })
       .addCase(fetchRoutes.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchRatings.fulfilled, (state, action) => {
+        state.routes = action.payload;
+        console.log(action.payload);
+      })
+      .addCase(fetchRatings.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

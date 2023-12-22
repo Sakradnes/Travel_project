@@ -27,7 +27,6 @@ function RoutesPage(): JSX.Element {
     // Обновляем локальное состояние
     setSelectedRating(rating);
 
-
     // Отправляем действие (action) для установки рейтинга
     dispatch(setRatingFetch(routeId, rating));
   };
@@ -45,7 +44,19 @@ function RoutesPage(): JSX.Element {
       <h1>Маршруты</h1>
       <div>
         {routesIslocation.map((route: Route) => (
-          <RouteCard key={route.id} route={route} />
+          <div key={route.id}>
+            <img
+              src={route.img}
+              alt="..."
+              className="rounded-full mx-auto mb-2"
+              style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+            />
+
+            <Link to={`/routes/${route.id}`}>
+              <h2 className="text-xl font-bold mb-2">{route.name}</h2>
+            </Link>
+            <p>{route.description}</p>
+          </div>
         ))}
       </div>
     </div>

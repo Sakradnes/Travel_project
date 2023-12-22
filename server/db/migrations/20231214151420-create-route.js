@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      rout: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       img: {
         allowNull: false,
         type: Sequelize.TEXT,

@@ -75,7 +75,6 @@
   background-color: peachpuff;
 }
 .dropbtn {
-  background-color: #4caf50;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -112,9 +111,6 @@
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
 .containerCalendar {
   width: 350px;
   max-width: 100%;
@@ -173,4 +169,54 @@
 
 .right-line {
   right: 0;
+}
+
+/* //MainPage */
+
+.img1 {
+  display: flex;
+  max-width: 300px;
+  gap: 20px;
+}
+.img1-1 {
+  width: 350px;
+  height: 250px;
+  align-self: center;
+  border-radius: 10%;
+}
+
+.img2 {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.img2-2 {
+  width: 350px;
+  height: 250px;
+  align-self: center;
+  border-radius: 10%;
+}
+
+.img3 {
+  display: flex;
+  max-width: 300px;
+  gap: 20px;
+}
+.img3-3 {
+  width: 350px;
+  height: 250px;
+  align-self: center;
+  border-radius: 10%;
+}
+
+.img4 {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.img4-4 {
+  width: 350px;
+  height: 250px;
+  align-self: center;
+  border-radius: 10%;
 }

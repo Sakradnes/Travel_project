@@ -9,22 +9,24 @@ export default function ModalEvent({
   event: any;
 }): JSX.Element {
   return (
-    <div className="containerCalendar">
-      <div>
-        <div>
-          <img src={event.img} alt={event.name} />
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-8 rounded flex">
+        <div className="w-1/2 pr-4">
+          <img src={event.img} alt={event.name} className="w-full rounded" />
         </div>
-        <div>
+        <div className="flex flex-col w-1/2">
           <Link to={`/event/${event.id}`}>
-            <h1>{event.name}</h1>
+            <h1 className="text-xl mb-2">{event.name}</h1>
           </Link>
+          <p className="text-sm text-gray-700 mb-4">{`${event.description.slice(0, 100)}...`}</p>
+          <button
+            type="button"
+            onClick={() => setShowModal(false)}
+            className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-700"
+          >
+            Закрыть
+          </button>
         </div>
-        <p className="textCalendar">{`${event.description.slice(0, 100)}...`}</p>
-      </div>
-      <div>
-        <button type="button" onClick={() => setShowModal(false)}>
-          закрыть
-        </button>
       </div>
     </div>
   );

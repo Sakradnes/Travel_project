@@ -53,33 +53,32 @@ export default function Header(): JSX.Element {
                 {location.name}
               </option>
             ))}
-
           </select>
         </div>
         <div className="route">
           <Link to="/routes">
-            <h1 className="text-xl">Маршруты путешествий</h1>
+            <h1 className="text-xl hover:text-gray-500 transition">Маршруты путешествий</h1>
           </Link>
         </div>
         <div className="blog-container">
           <Link to="/blog">
             <div className="blog-list">
-              <h4>Блог</h4>
+              <h4 className="hover:text-gray-500 transition">Блог</h4>
             </div>
           </Link>
         </div>
         <div className="flex">
           {user && isLoggedIn ? (
             <div className="dropdown relative">
-              <button className="dropbtn">Мой профиль</button>
+              <button className="dropbtn profile-btn hover:text-gray-500 transition">Мой профиль</button>
               <div className="dropdown-content absolute hidden bg-white text-black">
-                <Link to="/profile" className="block p-2 hover:bg-gray-200">
+                <Link to="/profile" className="block p-2 hover:bg-black-200">
                   Мой профиль
                 </Link>
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="block p-2 hover:bg-gray-200"
+                  className="block p-2 hover:bg-black-200"
                 >
                   Выйти
                 </button>
@@ -88,11 +87,11 @@ export default function Header(): JSX.Element {
           ) : (
             <>
               <Link to="/registration" className="pr-5">
-                <h1>Регистрация</h1>
+                <h1 className="hover:text-gray-500 transition">Регистрация</h1>
               </Link>
               <Link to="/login">
                 <div>
-                  <h1>Войти</h1>
+                  <h1 className="hover:text-gray-500 transition">Войти</h1>
                 </div>
               </Link>
             </>

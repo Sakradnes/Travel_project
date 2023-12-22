@@ -61,75 +61,57 @@ export default function MainPage(): JSX.Element {
   return (
     <div className="containerBlock">
       <div className="recklama">
-        <p>Реклама</p>
+        <p>Отзывы</p>
+
+        <h2>Здесь вы можете оставить свои отзывы</h2>
       </div>
 
       <div className="mainText lg:w-1/2 text-center lg:text-left relative">
         <div className="vertical-line left-line"></div>
         <div className="vertical-line right-line"></div>
-        <div className="imageMainPage flex flex-col lg:flex-row items-center justify-center bg-gray-100 bg-opacity-20 p-8">
+        <div className="imageMainPage flex flex-col lg:flex-row items-center justify-center bg-gray-500 bg-opacity-20 p-8">
           <div className="lg:w-full mb-8 lg:mb-0 lg:mr-4 flex flex-col space-y-4">
             <div className="block1">
-              <p>«Ничто так не развивает ум, как путешествие» – Эмиль Золя.</p>
-            </div>
-            <div className="img1">
-              <img
-                src="https://www.worldtrips.com/-/media/Project/TMHCC-MIS/HCCMISdotcom/Demand-Pages/best-travel-websites-person-sitting-on-a-couch-looking-at-phone.jpg?h=350&iar=0&w=675&hash=45AB979F6F3502C858189CDCE15EDD63"
-                alt="..."
-                className="lg:w-full rounded-md"
-              />
-            </div>
-            <div className="img2">
-              <img
-                src="https://www.worldtrips.com/-/media/Project/TMHCC-MIS/HCCMISdotcom/Demand-Pages/best-travel-websites-person-sitting-on-a-couch-looking-at-phone.jpg?h=350&iar=0&w=675&hash=45AB979F6F3502C858189CDCE15EDD63"
-                alt="..."
-                className="lg:w-full rounded-md"
-              />
-            </div>
-            <div className="img3">
-              <img
-                src="https://www.worldtrips.com/-/media/Project/TMHCC-MIS/HCCMISdotcom/Demand-Pages/best-travel-websites-person-sitting-on-a-couch-looking-at-phone.jpg?h=350&iar=0&w=675&hash=45AB979F6F3502C858189CDCE15EDD63"
-                alt="..."
-                className="lg:w-full rounded-md"
-              />
-            </div>
-          </div>
-          <div className="mainText lg:w-1/2 text-center lg:text-left">
-            <div className="text1">
-              <h2 className="text-lg mb-4">
+              <h2 className="mb-4">
                 Откройте для себя увлекательный мир приключений и отдыха!
               </h2>
-              <h3 className="mb-4">
+              <div className="img4">
+                <img
+                  src="https://www.worldtrips.com/-/media/Project/TMHCC-MIS/HCCMISdotcom/Demand-Pages/best-travel-websites-person-sitting-on-a-couch-looking-at-phone.jpg?h=350&iar=0&w=675&hash=45AB979F6F3502C858189CDCE15EDD63"
+                  alt="..."
+                  className="img4-4"
+                />
+              <p>«Ничто так не развивает ум, как путешествие» – Эмиль Золя.</p>
+              </div>
+            </div>
+            <div className="img1">
+              <img src="https://cdn.krym.news/img/0/781/1200.webp" alt="..." className="img1-1" />
+              <h3>
                 Невероятные маршруты, захватывающие истории и советы для вашего следующего
                 приключения.
               </h3>
-              <h4 className="mb-4">
+            </div>
+            <div className="img2">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcu-tkIua_U58tr4ryyVGglxCDId1xxo_bA_R0lwYcVQ&s"
+                alt="..."
+                className="img2-2"
+              />
+              <h3>
                 Погрузитесь в удивительные природные красоты и наслаждайтесь аутентичными встречами
                 с местными жителями.
-              </h4>
+              </h3>
             </div>
-            <div className="text2">
-              <h5 className="mb-4">
-                Для опытных путешественников и тех, кто только начинает свой путь - у нас есть
-                что-то особенное.
-              </h5>
-              <h6 className="mb-4">
-                Исследуйте древние улочки исторических городов, наслаждайтесь разнообразием культур
-                и кухонь.
-              </h6>
-            </div>
-            <div className="text3">
-              <h6 className="mb-4">
+            <div className="img3">
+              <img
+                src="https://kartinki.pics/uploads/posts/2022-02/thumbs/1645916768_7-kartinkin-net-p-kartinki-schastlivii-chelovek-7.jpg"
+                alt="..."
+                className="img3-3"
+              />
+              <h6 >
                 Мы создаем возможность для вас путешествовать в стиле, который подходит именно вам.
               </h6>
-              <h6 className="mb-4">
-                Поднимите паруса своего внутреннего исследователя и отправляйтесь в увлекательное
-                путешествие!
-              </h6>
-              <h6 className="mb-4">
-                Путеводитель в мир ваших мечтаний начинается здесь. Добро пожаловать в увлекательный
-                мир приключений!
-              </h6>
+             
             </div>
           </div>
         </div>
@@ -142,7 +124,7 @@ export default function MainPage(): JSX.Element {
           onClickDay={onClickDay}
         />
       </div>
-      <div>
+      <div className="admin">
         <div>{showModal && <ModalEvent setShowModal={setShowModal} event={event} />}</div>
         {user?.isAdmin && (
           <>

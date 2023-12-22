@@ -2,12 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchPosts = createAsyncThunk('blog/fetchPosts', async () => {
   const response = await fetch(
-    'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=809a03e6eaaa4a91bcfdd2818a0e040b',
+    `https://newsapi.org/v2/everything?q=travel&from=2023-11-21&language=ru&pageSize=20&apiKey=d40432c84cde4423bf6c94f3e4fcfafa`,
   );
+
   if (!response.ok) {
     return Error('Error');
   }
   const data = await response.json();
+  console.log(data);
+
   return data.articles;
 });
 

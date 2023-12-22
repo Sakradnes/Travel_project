@@ -8,16 +8,19 @@ import WayPage from '../../event/components/WayPage';
 
 export default function Maps({ route }: { route: Route | undefined }): JSX.Element {
   const { locations, isLocation } = useSelector((store: RootState) => store.location);
+
   const [way, setWay] = useState<number>();
   const [modal, setModal] = useState(false);
 
   const allCoordinates: [number, number][] = [];
   if (route) {
     route.Ways.forEach((rout: Way) => {
+
       if (rout) {
         const latitude = Number(rout.coordinateLatitude);
         const longitude = Number(rout.coordinateLongitude);
         allCoordinates.push([latitude, longitude]);
+
       }
     });
   }

@@ -6,7 +6,7 @@ import { useAppDispatch, type RootState } from '../../../store/store';
 import AddPhoto from './AddPhoto';
 import { deletePhotoAlbum } from '../../auth/authSlice';
 import btnDel from '../../../../public/icons8-отмена.svg';
-import EditUserForm from './editUserForm';
+import EditUserForm from './EditUserForm';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -91,7 +91,9 @@ function ProfilePage(): JSX.Element {
           alt={user?.name}
         />
         <h3>Имя пользователя: {user?.name}</h3>
+
         <h3>Email: {user?.email}</h3>
+
         <button onClick={openEditModal} type="button">
           Редактировать
         </button>

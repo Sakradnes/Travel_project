@@ -33,7 +33,6 @@ router.post('/', upload.single('img'), async (req, res) => {
       locationId: +locationId,
       img: newFileUrl,
     });
-    console.log(newEvent);
     res.status(200).json(newEvent);
   } catch (error) {
     console.log(error);

@@ -5,7 +5,6 @@ import type { RootState } from '../../../store/store';
 import type { Route } from '../type';
 import { Link } from 'react-router-dom';
 import { setRatingFetch } from '../../auth/api';
-import RouteCard from './RouteCard';
 
 // Импортируем действие (action) для установки рейтинга
 // import { setRating } from "";
@@ -13,7 +12,7 @@ import RouteCard from './RouteCard';
 function RoutesPage(): JSX.Element {
   const dispatch = useDispatch();
 
-  const { routes, ratings, loading, error } = useSelector((state: RootState) => state.routes);
+  const { routes, loading, error } = useSelector((state: RootState) => state.routes);
 
   const isLocation = useSelector((store: RootState) => store.location.isLocation);
 

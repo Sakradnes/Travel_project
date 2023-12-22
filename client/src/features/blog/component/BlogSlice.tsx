@@ -14,7 +14,7 @@ export const fetchPosts = createAsyncThunk('blog/fetchPosts', async () => {
   return data.articles;
 });
 
-const initialState = { posts: [], loading: false, error: null };
+const initialState = { posts: [], loading: false, error: undefined };
 
 const blogSlice = createSlice({
   name: 'blog',
@@ -24,15 +24,11 @@ const blogSlice = createSlice({
     builder
       .addCase(fetchPosts.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = false;
         state.posts = action.payload;
-      })
-      .addCase(fetchPosts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
       });
   },
 });
